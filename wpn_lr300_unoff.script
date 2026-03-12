@@ -1,0 +1,1149 @@
+model1:loadfromfile(sources\wpn_lr300_hud.ogf)
+model1.skeleton:loadomf(sources\wpn_m4_hud_animation.omf)
+
+// Remove all old scopes
+model1.mesh.child[]:filterbone(s_1 | s_2 | s_3 | s_4 | s_5 | s_acog | s_aimpoint | s_eot | s_kemper | s_leupold | s_pn23 | s_specter | s_susat)
+model1.mesh:removecollapsedchildren()
+
+// Add scopes
+model1.selection:pivotpoint(0.127,-0.104,0.509)
+
+// eotech
+model2:loadfromfile(sources\scope1_eotech_from_sig552.ogf)
+model1.skeleton:addbone(s_eot_metka, s_eot, 0,0,0,0,0,0,0)
+
+model2.mesh.child0:copy()
+model1.mesh.child0:paste()
+model1.mesh.child0:rebind(s_eot):move(0, -0.0175, 0):scale(0.97,0.97,0.97)
+
+model2.mesh.child1:copy()
+model1.mesh.child1:paste()
+model1.mesh.child1:rebind(s_eot):move(0, -0.0175, 0):scale(0.97,0.97,0.97)
+
+model2.mesh.child2:copy()
+model1.mesh.child2:paste()
+model1.mesh.child2:rebind(s_eot_metka):move(0, -0.0175, 0):scale(0.97,0.97,0.97)
+
+model2:unload()
+
+// aimpoint
+model2:loadfromfile(sources\scope2_aimpoint_from_sig552.ogf)
+model1.skeleton:addbone(s_aimpoint_metka, s_aimpoint, 0,0,0,0,0,0,0):addbone(s_aimpoint_lense, s_aimpoint, 0,0,0,0,0,0,0)
+
+model2.mesh.child0:copy()
+model1.mesh.child0:paste()
+model1.mesh.child0:rebind(s_aimpoint):move(0.0005, -0.0175, 0):scale(0.97,0.97,0.97)
+
+model2.mesh.child1:copy()
+model1.mesh.child1:paste()
+model1.mesh.child1:rebind(s_aimpoint_lense):move(0.0005, -0.0175, 0):scale(0.97,0.97,0.97)
+
+model2.mesh.child2:copy()
+model1.mesh.child2:paste()
+model1.mesh.child2:rebind(s_aimpoint):move(0.0005, -0.0175, 0):scale(0.97,0.97,0.97)
+
+model2.mesh.child3:copy()
+model1.mesh.child3:paste()
+model1.mesh.child3:rebind(s_aimpoint):move(0.0005, -0.0175, 0):scale(0.97,0.97,0.97)
+
+model2.mesh.child4:copy()
+model1.mesh.child4:paste()
+model1.mesh.child4:rebind(s_aimpoint_metka):move(0.0005, -0.0175, 0):scale(0.97,0.97,0.97)
+
+model2:unload()
+
+// elcan specter
+model2:loadfromfile(sources\scope3_elcan_from_sig552.ogf)
+
+model2.mesh.child0:copy()
+model1.mesh.child0:paste()
+model1.mesh.child0:rebind(s_specter):move(0, -0.0175, 0):scale(0.97,0.97,0.97)
+
+model2.mesh.child1:copy()
+model1.mesh.child1:paste()
+model1.mesh.child1:rebind(s_specter):move(0, -0.0175, 0):scale(0.97,0.97,0.97)
+
+model2.mesh.child2:copy()
+model1.mesh.child2:paste()
+model1.mesh.child2:rebind(s_specter):move(0, -0.0175, 0):scale(0.97,0.97,0.97)
+
+model2:unload()
+
+// pn23
+model2:loadfromfile(sources\scope4_pn23_from_sig552.ogf)
+
+model2.mesh.child0:copy()
+model1.mesh.child0:paste()
+model1.mesh.child0:rebind(s_pn23):move(0.0007, -0.0178, 0.004):scale(0.94,0.94,0.94)
+
+model2.mesh.child1:copy()
+model1.mesh.child1:paste()
+model1.mesh.child1:rebind(s_pn23):move(0.0007, -0.0178, 0.004):scale(0.94,0.94,0.94)
+
+model2.mesh.child2:copy()
+model1.mesh.child2:paste()
+model1.mesh.child2:rebind(s_pn23):move(0.0007, -0.0178, 0.004):scale(0.94,0.94,0.94)
+
+model2.mesh.child3:copy()
+model1.mesh.child3:paste()
+model1.mesh.child3:rebind(s_pn23):move(0.0007, -0.0178, 0.004):scale(0.94,0.94,0.94)
+
+model2:unload()
+
+// ------------------------------------------------ Copy mesh from stcopwp ------------------------------------------------
+model1.selection:pivotpoint(0,0,0)
+
+model2:loadfromfile(sources\wpn_lr300_hud_stcopwp.ogf)
+model2.mesh.child[texture:wpn\wpn_lr300]:copy()
+model1.mesh.child[texture:wpn\wpn_lr300]:remove()
+model1.mesh.child0:paste():scale(1.68, 1.68, 1.823):move(0.0594, -0.0585, 0.2605)
+
+model1.skeleton:addbone(lock, wpn_body, 0.1275388896,-0.193,0.554,0,0,0,1)
+model1.mesh.child0:rebind(lock, 1, 2)
+model1.mesh.child0:rebind(bolt_holder, 1, 7)
+model1.mesh.child0:rebind(bolt_holder1, 1, 8)
+model1.mesh.child0:rebind(spusk, 1, 9)
+model1.mesh.child0:rebind(bolt, 1, 19)
+
+model2.mesh.child[texture:wpn\wpn_mag_stanag_30]:copy()
+model1.mesh.child[texture:wpn\wpn_mag_stanag_30]:remove()
+model1.mesh.child1:paste():scale(1.68, 1.68, 1.823):move(0.0594, -0.0585, 0.2605):rebind(mag_30)
+
+model1.skeleton.bone[name:bolt]:move(0,0,0.044)
+
+// Add bones for firemode
+model1.skeleton.bone[name:firemode]:rename(gl_rails)
+model1.skeleton:addbone(firemode_1, wpn_body, 0.1275388896, -0.1899, 0.4595):addbone(firemode_a, wpn_body, 0.1275388896, -0.1899, 0.4595)
+
+// Extract firemode switch
+model1.selection:reset():pickverts(box, -1, -0.180, 0.472, 1, -0.201, 0.449):meshelement()
+model1.mesh.child0:splitselected()
+model1.selection:reset():pickverts(box, -1, -0.186, 0.495, 1, -0.196, 0.481)
+model1.mesh.child1:moveselected(0,0,-0.005):rebind(firemode_a):copy()
+model1.selection:pivotpoint(0.1275388896, -0.1899, 0.4595)
+model1.mesh.child2:paste():rebind(firemode_1):rotate(90, x)
+model1.selection:reset()
+model2:unload()
+
+// ----- create long barrel & second fore ----
+model1.skeleton:addbone(barrel, wpn_body, 0.1275388896, -0.148, 1.138, 1):addbone(barrel_long, wpn_body, 0.1275388896, -0.148, 1.138, 1)
+model1.skeleton:addbone(fore, wpn_body, 0.1275388896, -0.148, 0.819, 1):addbone(fore_mod, wpn_body, 0.1275388896, -0.148, 0.819, 1)
+
+// split original barrel
+model1.selection:reset():pickverts(box, -1, -0.09, 1.202, 1, -0.163, 1.068):meshelement()
+model1.mesh.child0:splitselected()
+model1.mesh.child1:rebind(barrel):copy()
+
+// split original fore
+model1.selection:reset():pickverts(box, -1, -0.031, 1.042, 1, -0.186, 0.770):pickverts(box, -1, -0.194, 0.691, 1, -0.088, 0.749):meshelement()
+model1.mesh.child0:splitselected()
+model1.mesh.child1:rebind(fore)
+
+model1.selection:reset():pickverts(box, -1, -0.039, 0.673, 1, -0.101, 0.599):pickverts(box, -1, -0.109, 0.606, 1, -0.113, 0.600):pickverts(box, -1, -0.099, 0.665, 1, -0.108, 0.658):meshelement()
+model1.mesh.child0:rebindselected(ironsight)
+
+model1.skeleton:addbone(ironsight_fore, wpn_body, 0.1275388896, -0.110, 0.984)
+model1.selection:reset():pickverts(box, -1, -0.086, 0.960, 1, -0.039, 1.018):pickverts(sphere, 0.117, -0.092, 0.965, 0.00101):pickverts(sphere, 0.139, -0.092, 0.965, 0.00100):meshelement()
+model1.mesh.child1:splitselected()
+model1.mesh.child2:rebind(ironsight_fore)
+
+model1.selection:reset():pickverts(box, -1, -0.035, 1.041, 1, -0.129, 0.968):pickverts(box, -1, -0.127, 1.037, 1, -0.139, 1.023):pickverts(box, -1, -0.075, 0.975, 1, -0.099, 0.959):meshelement()
+model1.mesh.child1:splitselected()
+model1.mesh.child2:rebind(wpn_body)
+
+
+model2:loadfromfile(sources\wpn_lr300_hud_xrmpe.ogf)
+
+model2.mesh.child[texture:wpn\wpn_lr300_upper]:copy()
+model1.mesh.child2:paste()
+model1.mesh.child2:settexture(wpn\wpn_lr300_unoff_upper)
+
+// split new barrel
+model1.selection:reset():pickverts(box, -1, 0.07, 0.550, 1, 0.014, 0.422):meshelement()
+model1.mesh.child2:splitselected()
+model1.selection:pivotpoint(0.128,-0.085,1.0)
+model1.mesh.child3:rebind(barrel_long):move(0.1289, -0.183, 0.636):scale(1,1,1.07)
+model1.mesh.child2:rebind(fore_mod):move(0.1289, -0.183, 0.636):scale(1,1,1.07)
+
+// split new  fore
+model1.selection:reset():pickverts(box, -1, -0.015, 0.369, 1, -0.212, 0.669):pickverts(box, -1, -0.093, 0.685, 1, -0.110, 0.669):meshelement()
+model1.mesh.child2:removeselected()
+
+model1.selection:reset():pickverts(box, -1, -0.035, 1.041, 1, -0.129, 0.968):pickverts(box, -1, -0.127, 1.037, 1, -0.139, 1.023):pickverts(box, -1, -0.075, 0.975, 1, -0.099, 0.959):meshelement()
+model1.mesh.child2:removeselected()
+
+// make barrel longer
+model1.selection:reset():pickverts(box, -1, -0.110, 1.201, 1, -0.167, 1.063)
+model1.mesh.child3:moveselected(0,0,0.15)
+model2:unload()
+
+model1.selection:reset()
+
+
+
+// ------------------------------------------------ Copy grenade launcher rail from XR MPE version ------------------------------------------------
+model2:loadfromfile(sources\wpn_lr300_hud_xrmpe.ogf)
+model2.mesh.child[texture:wpn\wpn_lr300_gl]:copy()
+model1.mesh.child1:paste():move(0.129, -0.163, 0.637):rebind(gl_rails)
+model1.selection:reset():pickverts(box, -1, -0.085, 0.943, 1, -0.143, 1.004):pickverts(box, -1, -0.110, 1.041, 1, -0.093, 1.054):pickverts(box, -1, -0.090, 1.055, 1, -0.098, 1.045):meshelement()
+model1.mesh.child1:removeselected()
+
+// if bind to wpn_launcher - use 0.003, otherwise -0.017
+// model1.mesh.child1:move(0, 0.003, 0)
+model1.mesh.child1:move(0, -0.017, 0)
+
+model1.selection:reset()
+model2:unload()
+
+model1.selection:pivotpoint(0.108, 0, 0.743)
+model2:loadfromfile(sources\lr300_gl_rail.ogf)
+model2.mesh.child0:copy()
+model1.mesh.child1:paste():rebind(gl_rails):rotate(180, z):move(0.01945, -0.0978, 0.073)
+model2:unload()
+
+// ------------------------------------------------ Copy upgrades and addons from sg550 ------------------------------------------------
+model2:loadfromfile(sources\wpn_sig550_tactical_hud.ogf)
+
+model2.mesh.child[texture:wpn\wpn_m203]:rebind(1, 1, wpn_launcher):rebind(2, 1, wpn_launcher_barrel):copy():remove()
+model1.mesh.child[texture:wpn\wpn_m203]:remove()
+model1.mesh.child1:paste():rebind(wpn_launcher, 1, 1):rebind(wpn_launcher_barrel, 1, 2)
+
+model2.mesh.child[texture:wpn\wpn_m433hedp]:rebind(1, 1, wpn_launcher_grenade):rebind(2, 1, wpn_launcher_grenade_blue):rebind(3, 1, wpn_launcher_grenade_red):rebind(4, 1, wpn_launcher_shell):copy():remove()
+model1.mesh.child[texture:wpn\wpn_m433hedp]:remove()
+model1.mesh.child1:paste():rebind(wpn_launcher_grenade, 1, 1):rebind(wpn_launcher_grenade_blue, 1, 2):rebind(wpn_launcher_grenade_red, 1, 3):rebind(wpn_launcher_shell, 1, 4)
+
+model2.mesh.child[texture:wpn\wpn_anpeq16a]:copy()
+model1.mesh.child[texture:wpn\wpn_anpeq16a]:remove()
+model1.mesh.child1:paste():rebind(laser):move(0.005, 0.002, 0.195)
+model1.selection:reset()
+model1.selection:pivotpoint(0.107, -0.171, 0.806):pickverts(box, 1, -0.104, 0.876, -1, -0.210, 0.763)
+model1.mesh.child1:rotateselected(-20, x):rotateselected(2, z)
+model1.mesh.child1:moveselected(-0.0007, -0.021, -0.175)
+model1.selection:reset():pickverts(box, 1, -0.104, 0.919, -1, -0.124, 0.650):meshelement()
+model1.mesh.child1:removeselected()
+
+model1.selection:pivotpoint(0.128, -0.08, 0.778)
+model2.mesh.child[texture:wpn\wpn_m203_ironsight]:rebind(1, 1, wpn_launcher_sight):rebind(2, 1, wpn_launcher_sight2):copy():remove()
+model1.mesh.child[texture:wpn\wpn_m203_ironsight]:remove()
+model1.mesh.child1:paste():rebind(wpn_launcher_sight, 1, 1):rebind(wpn_launcher_sight2, 1, 2):move(0, -0.0085, -0.1655)
+model1.selection:reset()
+
+model2.mesh.child[texture:wpn\wpn_tactical_handler]:copy()
+model1.mesh.child[texture:wpn\wpn_foregrip_zenit]:remove()
+model1.mesh.child1:paste():rebind(grip):move(0,-0.017,0)
+
+model2:unload()
+
+// ------------------------------------------------ Copy LAM cable ------------------------------------------------
+model2:loadfromfile(sources\lr300_lam_cable.ogf)
+model2.mesh.child0:copy()
+model1.selection:pivotpoint(0,0,0)
+model1.mesh.child1:paste():rebind(laser):scale(0.5,0.5,0.5)
+model2:unload()
+
+// ------------------------------------------------ Copy stock ------------------------------------------------
+model1.skeleton:addbone(stock, wpn_body, 0,0,-0.3, 0,0,0, 0):addbone(stock_mod, wpn_body, 0,0,-0.3, 0,0,0, 0):addbone(stock_mod2, wpn_body, 0,0,-0.3, 0,0,0, 0)
+model1.selection:reset():pickverts(box, 1, -0.110, 0.379, -1, -0.275,0.039):meshelement()
+model1.mesh.child0:rebindselected(stock)
+
+model2:loadfromfile(sources\wpn_m4_tac_hud.ogf)
+model2.mesh.child[texture:wpn\wpn_stock_ar15_high_standart_m4ss_LOD0_diff]:copy()
+model1.mesh.child1:paste():rebind(stock_mod):scale(1.7,1.7,1.7):move(0.06, -0.0655, 0.26)
+model2.mesh.child[texture:wpn\wpn_ar15_stock_moe_carbine]:copy()
+model1.mesh.child1:paste():rebind(stock_mod):scale(1.7,1.7,1.7):move(0.06, -0.0655, 0.26)
+model2:unload()
+
+model2:loadfromfile(sources\wpn_m4_skryaga_hud.ogf)
+model2.mesh.child[texture:wpn\wpn_stock_ar15_magpul_ubr]:copy()
+model1.mesh.child1:paste():rebind(stock_mod2):scale(1.7,1.7,1.7):move(0.056, -0.0575, 0.264)
+model2:unload()
+
+// ------------------------------------------------ Copy bolt handler ------------------------------------------------
+
+model1.skeleton:addbone(bolt_holder_new, wpn_body, 0,-0.106, 0.4, 0,0,0, 0)
+model2:loadfromfile(sources\wpn_m4_skryaga_hud.ogf)
+model2.mesh.child[texture:wpn\wpn_ar15_masp_charging_handle]:copy()
+model1.mesh.child1:paste():rebind(bolt_holder_new):scale(1.5,1.5,1.5):move(0.066, -0.063, 0.283)
+model2:unload()
+
+// ------------------------------------------------ Copy mags & silencer ------------------------------------------------
+model1.mesh.child[texture:wpn\wpn_mag_5x56_40rnd]:remove()
+model1.mesh.child[texture:wpn\wpn_mag_5x56_60rnd]:remove()
+model1.mesh.child[texture:wpn\wpn_sil_m4]:remove()
+
+model2:loadfromfile(sources\wpn_l85_hud.ogf)
+model2.mesh.child[texture:wpn\wpn_mag_5x56_40rnd]:copy()
+model1.mesh.child1:paste():rebind(mag_45):move(0.0145, -0.0165, 0.257)
+model2.mesh.child[texture:wpn\wpn_mag_5x56_60rnd]:copy()
+model1.mesh.child1:paste():rebind(mag_60):move(0.0145, -0.0165, 0.257)
+model2.mesh.child[texture:wpn\silencer_556]:copy()
+model1.mesh.child1:paste():rebind(wpn_silencer):move(0.0144, -0.0203, 0.08)
+model2:unload()
+
+// make second silencer for long barrel
+model1.skeleton:addbone(sil_long, wpn_silencer, 0.1275388896, -0.150, 1.200, 1)
+model1.skeleton:addbone(sil_short, wpn_silencer, 0.1275388896, -0.150, 1.315, 1)
+model1.mesh.child1:rebind(sil_short):copy()
+model1.mesh.child1:paste():rebind(sil_long):move(0,0,0.15)
+
+// ------------------------------------------------ Copy sights ------------------------------------------------
+model2:loadfromfile(sources\lr300_sights.ogf)
+model1.skeleton:addbone(sights, ironsight_fore, 0.128,-0.057,0.987)
+model2.mesh.child0:copy()
+model1.mesh.child1:paste():rebind(sights):settexture(wpn\sights):setshader(models\selflightl)
+model2:unload()
+
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! HUD MODEL ANIMATIONS !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+model2:loadfromfile(sources\wpn_sig550_hud.ogf)
+model2.skeleton:loadomf(sources\wpn_sig550_hud_animation.omf)
+
+// -------------- Correct shell position in the last shoot frames --------------
+model1.skeleton.animation[name:idle]:copykey(0, shell)
+model1.skeleton.animation[name:aim_shoot*]:pastekey(0)
+model1.skeleton.animation[name:aim_shoot*].bone[name:shell]:clonekey(0, 6, -1)
+model1.skeleton.animation[name:aim_shoot*]:setaccrue(10):setfalloff(10)
+model1.skeleton.animation[name:shoot*]:setaccrue(10):setfalloff(10)
+
+// -------------- move aim marks outside of player's view in all animations --------------
+model1.skeleton.animation[].bone[expr:s_aimpoint_metka | s_eot_metka]:move(0, -10, 0, 0, -1, 0, 0)
+
+// -------------- aim_start - show marks --------------
+model1.skeleton.animation[name:idle]:duplicate(aim_start)
+model1.skeleton.animation[name:idle_empty]:duplicate(aim_start_empty)
+model1.skeleton.animation[name:idle_jammed]:duplicate(aim_start_jammed)
+model1.skeleton.animation[name:aim_start*]:setlength(9)
+model1.skeleton.animation[name:aim_start*].bone[expr:s_aimpoint_metka | s_eot_metka]:move(0, 10, 0, 4, -1, 0, 0)
+model1.skeleton.animation[name:aim_start*].bone[expr:s_aimpoint_lense]:move(0, -10, 0, 4, -1, 0, 0)
+
+// -------------- aim_idle - marks always visible --------------
+model1.skeleton.animation[name:idle]:duplicate(aim_idle)
+model1.skeleton.animation[name:idle_empty]:duplicate(aim_idle_empty)
+model1.skeleton.animation[name:idle_jammed]:duplicate(aim_idle_jammed)
+model1.skeleton.animation[name:aim_idle*]:setlength(1)
+model1.skeleton.animation[name:aim_idle*].bone[expr:s_aimpoint_metka | s_eot_metka]:move(0, 10, 0, 0, -1, 0, 0)
+model1.skeleton.animation[name:aim_idle*].bone[expr:s_aimpoint_lense]:move(0, -10, 0, 0, -1, 0, 0)
+
+// -------------- aim_shoot - marks always shown --------------
+model1.skeleton.animation[name:aim_shoot*].bone[expr:s_aimpoint_metka | s_eot_metka]:move(0, 10, 0, 0, -1, 0, 0)
+model1.skeleton.animation[name:aim_shoot*].bone[expr:s_aimpoint_lense]:move(0, -10, 0, 0, -1, 0, 0)
+
+// -------------- aim_end - hide marks --------------
+model1.skeleton.animation[name:idle]:duplicate(aim_end)
+model1.skeleton.animation[name:idle_empty]:duplicate(aim_end_empty)
+model1.skeleton.animation[name:idle_jammed]:duplicate(aim_end_jammed)
+model1.skeleton.animation[name:aim_end*]:setlength(5)
+model1.skeleton.animation[name:aim_end*].bone[expr:s_aimpoint_metka | s_eot_metka]:move(0, 10, 0, 0, 2, 0, 0)
+model1.skeleton.animation[name:aim_end*].bone[expr:s_aimpoint_lense]:move(0, -10, 0, 0, 2, 0, 0)
+
+// -------------- Firemode - from auto to single --------------
+model1.skeleton.animation[name:idle]:duplicate(firemode_single)
+model1.skeleton.animation[name:idle_empty]:duplicate(firemode_single_empty)
+model1.skeleton.animation[name:idle_jammed]:duplicate(firemode_single_jammed)
+model1.skeleton.animation[name:m4_glon_idle]:duplicate(firemode_single_glon)
+model1.skeleton.animation[name:m4_glon_idle_empty]:duplicate(firemode_single_glon_empty)
+model1.skeleton.animation[name:m4_glon_idle_jammed]:duplicate(firemode_single_glon_jammed)
+model1.skeleton.animation[name:firemode_single*]:setlength(26):setaccrue(0):setfalloff(0):setspeed(1):setpower(1):setflags(2)
+model1.skeleton.animation[name:firemode_single*].bone[expr:firemode_a]:rotate(90,0,0, 13, -1)
+model1.skeleton.animation[name:firemode_single*].bone[expr:firemode_1]:rotate(-90,0,0, 0, 11)
+model1.skeleton.animation[name:firemode_single*].bone[name:firemode_*]:interpolate(11, 13,true,true)
+
+// -------------- Firemode - from single to auto --------------
+model1.skeleton.animation[name:idle]:duplicate(firemode_auto)
+model1.skeleton.animation[name:idle_empty]:duplicate(firemode_auto_empty)
+model1.skeleton.animation[name:idle_jammed]:duplicate(firemode_auto_jammed)
+model1.skeleton.animation[name:m4_glon_idle]:duplicate(firemode_auto_glon)
+model1.skeleton.animation[name:m4_glon_idle_empty]:duplicate(firemode_auto_glon_empty)
+model1.skeleton.animation[name:m4_glon_idle_jammed]:duplicate(firemode_auto_glon_jammed)
+model1.skeleton.animation[name:firemode_auto*]:setlength(26):setaccrue(0):setfalloff(0):setspeed(1):setpower(1):setflags(2)
+model1.skeleton.animation[name:firemode_auto*].bone[expr:firemode_1]:rotate(-90,0,0, 11, -1)
+model1.skeleton.animation[name:firemode_auto*].bone[expr:firemode_a]:rotate(90,0,0, 0, 9)
+model1.skeleton.animation[name:firemode_auto*].bone[name:firemode_*]:interpolate(9, 11,true,true)
+
+// --------------  correct glon_idle's to prevent 'grenade drop' in the start of reload -------------- 
+model1.skeleton.animation[name:m4_glon_idle*]:setaccrue(0):setfalloff(0)
+
+// -------------- make gl_changegrenade from sg550_gl_changegrenade ---------------------
+model1.skeleton.animation[name:m4_glon_idle]:duplicate(gl_changegrenade)
+model1.skeleton.animation[name:m4_glon_idle_empty]:duplicate(gl_changegrenade_empty)
+model1.skeleton.animation[name:m4_glon_idle_jammed]:duplicate(gl_changegrenade_jammed)
+model1.skeleton.animation[name:gl_changegrenade*]:setlength(1):setspeed(1):setpower(1):setaccrue(5):setfalloff(10):setflags(2)
+model2.skeleton.animation[name:sg550_gl_changegrenade]:copytrack(0, -1, wpn_launcher_grenade | wpn_launcher_grenade_blue | wpn_launcher_grenade_red | wpn_launcher_barrel | wpn_launcher_shell)
+model1.skeleton.animation[name:gl_changegrenade*]:pastetrack(0, 0)
+model2:unload()
+
+// -------------- remove m4 prefix from all weapon's anims ------------------------------
+model1.skeleton.animation[name:m4_*]:rename(*)
+
+// -------------- correct gl_reload prevent 'grenade drop' in the start  -----------------------------------------------------
+model1.skeleton.animation[name:gl_reload*]:setaccrue(0):setfalloff(0)
+
+// -------------- Correct grenade launcher position --------------
+model1.skeleton.animation[].bone[name:wpn_launcher]:move(0,-0.02, 0, 0, -1, 0, 0)
+model1.skeleton.animation[].bone[name:wpn_launcher_sight]:move(0,0.02, 0, 0, -1, 0, 0)
+
+// -------------- Correct texture name to avoid future conflicts -------
+model1.mesh.child[texture:wpn\wpn_lr300]:settexture(wpn\wpn_lr300_unoff)
+model1.mesh.child[texture:wpn\wpn_lr300_gl]:settexture(wpn\wpn_lr300_unoff_gl)
+model1.mesh.child[texture:wpn\wpn_mag_stanag_30]:settexture(wpn\wpn_unoff_mag_stanag_30)
+
+// -------------- correct bolr movement in revival --------------
+model1.skeleton.animation[name:revival].bone[name:bolt]:clonekey(0,1,30)
+
+// -------------- Correction of reload_empty animation ------------------------------------------------------
+model1.selection:pivotpoint(0.1275,-0.168,0.598)
+model1.mesh.child[texture:wpn\ammo_5x56]:scale(0.97, 0.97, 0.97)
+model1.selection:pivotpoint(0,0,0)
+
+model1.skeleton.animation[name:idle]:copykey(0, shell)
+model1.skeleton.animation[name:reload_empty_new]:pastekey(0,-1)
+
+model1.skeleton.animation[name:reload_empty_new]:duplicate(reload)
+
+model1.skeleton:addbone(ammo_additional, ammo2, 0,0,0,0,0,0,0)
+model1.skeleton.bone[name:ammo_additional]:reparent(magazin)
+model1.mesh.child[texture:wpn\ammo_5x56]:copy()
+model1.mesh.child1:paste():filterbone(!ammo2):rebind(ammo_additional)
+
+model1.skeleton.animation[name:idle].bone[name:ammo_additional]:move(0.005,-0.1,0, 0,0)
+model1.skeleton.animation[name:idle].bone[expr:ammo1 | ammo2]:move(0,0.005,0, 0,0)
+model1.skeleton.animation[name:idle]:copykey(0, ammo_additional | ammo1 | ammo2)
+model1.skeleton.animation[name!reload_empty_new]:pastekey(0,-1)
+
+
+model1.skeleton.animation[name:reload_empty_new].bone[expr:ammo1 | ammo2]:move(0,0.005,0, 0,0):clonekey(0,1,32):clonekey(0,58,-1)
+
+model1.skeleton.animation[name:reload_empty_new].bone[name:ammo_additional]:move(0,0.01,0, 0,0)
+model1.skeleton.animation[name:reload_empty_new].bone[expr:ammo1 | ammo2]:move(0,-0.005,0, 0,0)
+model1.skeleton.animation[name:reload_empty_new].bone[expr:ammo1 | ammo2 | ammo_additional]:clonekey(0, 33,57)
+model1.skeleton.animation[name:reload_empty_new]:copykey(1, ammo1 | ammo2 | ammo_additional):pastekey(0)
+
+model1.skeleton.animation[name:reload_empty_new].bone[expr:ammo2 | ammo_additional]:move(0.005,-0.04,0, 0,0)
+model1.skeleton.animation[name:reload_empty_new].bone[expr:ammo1]:move(-0.005,-0.04,0, 0,0)
+model1.skeleton.animation[name:reload_empty_new].bone[expr:ammo1 | ammo2 | ammo_additional]:clonekey(0, 1,32)
+
+
+model1.skeleton.animation[name:gloff_reload_empty]:remove()
+model1.skeleton.animation[name:reload_empty_new]:rename(reload_empty)
+
+model1.skeleton.animation[].bone[name:bolt_holder_new]:followbone(bolt_holder, 0, 0, -1)
+
+
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! HANDS ANIMATIONS !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+model3:loadfromfile(sources\wpn_hand_01.ogf)
+model3.skeleton:loadomf(sources\wpn_hand_m4_hud_animation.omf)
+
+model4:loadfromfile(sources\wpn_hand_01.ogf)
+model4.skeleton:loadomf(sources\wpn_hand_sig550_hud_animation.omf)
+
+// ------------- fix incorrect 1st frame in idles --------------------------
+model3.skeleton.animation[name:m4_idle]:copykey(100):pastekey(0)
+model3.skeleton.animation[name:m4_walk]:copykey(1):pastekey(0)
+model3.skeleton.animation[name:m4_gloff_walk]:copykey(1):pastekey(0)
+
+// ------------- Compensate scaling of the model ------------- 
+model3.skeleton.animation[name:m4_g*]:rename(_m4_g*)
+//model3.skeleton.animation[name:m4_reload_empty]:rename(_m4_reload_empty)
+model3.skeleton.animation[name:m4_*].bone[name:l_clavicle]:move(-0.003,0.02,0,0,-1,0,0)
+model3.skeleton.animation[name:m4_*].bone[name:l_finger0]:rotate(0,-4,-9,0,-1,0)
+model3.skeleton.animation[name:m4_*].bone[name:l_finger01]:rotate(0,3,5,0,-1,0)
+model3.skeleton.animation[name:m4_*].bone[name:l_finger02]:rotate(0,0,5,0,-1,0)
+model3.skeleton.animation[name:m4_*].bone[name:bip01_l_finger22]:rotate(0,0,-20,0,-1,0)
+model3.skeleton.animation[name:m4_*].bone[name:bip01_l_finger32]:rotate(0,15,0,0,-1,0)
+model3.skeleton.animation[name:m4_*].bone[name:l_hand]:rotate(-4,0,-3,0,-1,0)
+model3.skeleton.animation[name:_m4_*]:rename(m4_*)
+
+model3.skeleton.animation[name:m4_reload].bone[name:l_clavicle]:move(0.015,0,0,42,65,0,0):interpolate(65, 69)
+model3.skeleton.animation[name:m4_reload_empty].bone[name:l_clavicle]:move(-0.025,0.01,-0.01,59,75,0,0):interpolate(54, 59, 1, 0, 1.2)
+model3.skeleton.animation[name:m4_reload_empty].bone[name:l_finger0]:rotate(0,0,-10,63,72,0)
+model3.skeleton.animation[name:m4_gl_reload].bone[name:l_clavicle]:move(-0.02,-0.02,0,30,54,0,0):interpolate(54, 57)
+model3.skeleton.animation[name:m4_gl_reload].bone[name:l_clavicle]:move(-0.02,0.0,0,7,20,0,0)
+
+// -------------- make lr300_unoff_firemode_1_to_a from sg550_firemode_a_to_1 and lr300_unoff_firemode_a_to_1 from sg550_firemode_1_to_a---------------------
+model3.skeleton.animation[name:m4_idle]:duplicate(lr300_unoff_firemode_a_to_1):duplicate(lr300_unoff_firemode_1_to_a)
+model3.skeleton.animation[name:lr300_unoff_firemode_*]:setlength(1):setspeed(1):setpower(1):setaccrue(4):setfalloff(10):setflags(2)
+
+model4.skeleton.animation[name:sg550_firemode_1_to_a]:copytrack()
+model3.skeleton.animation[name:lr300_unoff_firemode_a_to_1]:pastetrack(0, 0)
+model4.skeleton.animation[name:sg550_firemode_a_to_1]:copytrack()
+model3.skeleton.animation[name:lr300_unoff_firemode_1_to_a]:pastetrack(0, 0)
+
+model3.skeleton.animation[name:m4_idle]:copykey(0)
+model3.skeleton.animation[name:lr300_unoff_firemode_*]:pastekey(0)
+model3.skeleton.animation[name:lr300_unoff_firemode_*].bone[name:*]:applydiff(0, -1, 1, -1)
+
+// -------------- make lr300_unoff_gloff_firemode_a_to_1 from sg550_gloff_firemode_1_to_a and lr300_unoff_gloff_firemode_1_to_a from sg550_gloff_firemode_a_to_1---------------------
+model3.skeleton.animation[name:m4_gloff_idle]:duplicate(lr300_unoff_gloff_firemode_a_to_1):duplicate(lr300_unoff_gloff_firemode_1_to_a)
+model3.skeleton.animation[name:lr300_unoff_gloff_firemode_*]:setlength(1):setspeed(1):setpower(1):setaccrue(4):setfalloff(10):setflags(2)
+
+model4.skeleton.animation[name:sg550_gloff_firemode_1_to_a]:copytrack()
+model3.skeleton.animation[name:lr300_unoff_gloff_firemode_a_to_1]:pastetrack(0, 0)
+model4.skeleton.animation[name:sg550_gloff_firemode_a_to_1]:copytrack()
+model3.skeleton.animation[name:lr300_unoff_gloff_firemode_1_to_a]:pastetrack(0, 0)
+
+model3.skeleton.animation[name:m4_gloff_idle]:copykey(0)
+model3.skeleton.animation[name:lr300_unoff_gloff_firemode_*]:pastekey(0)
+model3.skeleton.animation[name:lr300_unoff_gloff_firemode_*].bone[name:*]:applydiff(0, -1, 1, -1)
+
+// -------------- make lr300_unoff_glon_firemode_a_to_1 from sg550_glon_firemode_1_to_a and lr300_unoff_glon_firemode_1_to_a from sg550_glon_firemode_a_to_1---------------------
+model3.skeleton.animation[name:m4_glon_idle]:duplicate(lr300_unoff_glon_firemode_a_to_1):duplicate(lr300_unoff_glon_firemode_1_to_a)
+model3.skeleton.animation[name:lr300_unoff_glon_firemode_*]:setlength(1):setspeed(1):setpower(1):setaccrue(4):setfalloff(10):setflags(2)
+
+model4.skeleton.animation[name:sg550_glon_firemode_1_to_a]:copytrack()
+model3.skeleton.animation[name:lr300_unoff_glon_firemode_a_to_1]:pastetrack(0, 0)
+model4.skeleton.animation[name:sg550_glon_firemode_a_to_1]:copytrack()
+model3.skeleton.animation[name:lr300_unoff_glon_firemode_1_to_a]:pastetrack(0, 0)
+
+model3.skeleton.animation[name:m4_glon_idle]:copykey(0)
+model3.skeleton.animation[name:lr300_unoff_glon_firemode_*]:pastekey(0)
+model3.skeleton.animation[name:lr300_unoff_glon_firemode_*].bone[name:*]:applydiff(0, -1, 1, -1)
+model3.skeleton.animation[name:lr300_unoff_glon_firemode_*].bone[name:r_clavicle]:move(-0.008,0.01,0.03,5,20,0,0):interpolate(2,6,true,false):interpolate(18,22,true,false)
+model3.skeleton.animation[name:lr300_unoff_glon_firemode_*].bone[name:bip01_r_finger12]:rotate(0,0,-20,3,20,0):interpolate(0,3,true,true):interpolate(20,23,true,true)
+model3.skeleton.animation[name:lr300_unoff_glon_firemode_*].bone[name:bip01_r_finger11]:rotate(0,0,-20,3,20,0):interpolate(0,3,true,true):interpolate(20,23,true,true)
+model3.skeleton.animation[name:lr300_unoff_glon_firemode_*].bone[name:bip01_r_finger1]:rotate(0,15,30,3,20,0):interpolate(0,3,true,true):interpolate(20,23,true,true)
+
+// -------------- make lr300_unoff_gl_changegrenade from sg550_gl_changegrenade ---------------------
+model3.skeleton.animation[name:m4_glon_idle]:duplicate(lr300_unoff_gl_changegrenade)
+model3.skeleton.animation[name:lr300_unoff_gl_changegrenade]:setlength(1):setspeed(1):setpower(1):setaccrue(5):setfalloff(10):setflags(2)
+
+model4.skeleton.animation[name:sg550_gl_changegrenade]:copytrack()
+model3.skeleton.animation[name:lr300_unoff_gl_changegrenade]:pastetrack(0, 0)
+model3.skeleton.animation[name:m4_glon_idle]:copykey(0)
+model3.skeleton.animation[name:lr300_unoff_gl_changegrenade]:pastekey(0)
+model3.skeleton.animation[name:lr300_unoff_gl_changegrenade].bone[name:*]:applydiff(0, -1, 1, -1)
+model3.skeleton.animation[name:lr300_unoff_gl_changegrenade].bone[name:l_clavicle]:move(0.01,0,-0.01, 5,-15, 0,0):interpolate(1,5,true,false):interpolate(-15,-12,true,false)
+model3.skeleton.animation[name:lr300_unoff_gl_changegrenade].bone[name:bip01_l_finger1*]:clonekey(21,22,26):interpolate(26,29)
+
+// -------------- lr300_unoff_lam from m4_tac_lam --------------
+model3.skeleton.animation[name:m4_tac_lam]:duplicate(lr300_unoff_lam)
+model3.skeleton.animation[name:m4_idle]:copykey(0)
+model3.skeleton.animation[name:lr300_unoff_lam]:pastekey(0):pastekey(-1):setflags(2)
+model3.skeleton.animation[name:lr300_unoff_lam].bone[name:bip01_r_finger*]:clonekey(0, 1, -1)
+model3.skeleton.animation[name:lr300_unoff_lam].bone[name:r_finger*]:clonekey(0, 1, -1)
+
+model3.skeleton.animation[name:lr300_unoff_lam].bone[name:l_clavicle]:move(-0.005, -0.04, 0.02, 9, 21,0,0)
+model3.skeleton.animation[name:lr300_unoff_lam].bone[]:interpolate(0, 9)
+
+model3.skeleton.animation[name:lr300_unoff_lam].bone[name:l_*]:clonekey(0, -13, -1)
+model3.skeleton.animation[name:lr300_unoff_lam].bone[name:bip01_l_*]:clonekey(0, -13, -1)
+
+model3.skeleton.animation[name:lr300_unoff_lam].bone[name:l_clavicle]:followbone(lead_gun, -1, -2, -13)
+
+model3.skeleton.iksolver:simplelimb(l_hand, x, xz)
+model3.skeleton.animation[name:lr300_unoff_lam]:setikrefpose(-1)
+model3.skeleton.animation[name:lr300_unoff_lam].bone[name:l_hand]:followbone(lead_gun, -1, -2, -13)
+model3.skeleton.iksolver:reset()
+
+model3.skeleton.animation[name:lr300_unoff_lam].bone[expr: l_clavicle | l_upperarm | l_forearm | l_forearm_twist | l_hand]:interpolate(20, -11, true, true, 0.4)
+
+model3.skeleton.animation[name:lr300_unoff_lam].bone[name: l_finger*]:interpolate(20, -11, true, true, 1.0)
+model3.skeleton.animation[name:lr300_unoff_lam].bone[name: bip01_l_finger*]:interpolate(20, -11, true, true, 1.0)
+
+model3.skeleton.animation[name:lr300_unoff_lam].bone[name:l_clavicle]:move(-0.02, 0, 0, 21, 25,0,0)
+model3.skeleton.animation[name:lr300_unoff_lam].bone[name:l_clavicle]:interpolate(24, -11, true, false)
+
+// -------------- lr300_unoff_gloff_lam from sg550_gloff_lam --------------
+model3.skeleton.animation[name:lr300_unoff_lam]:duplicate(lr300_unoff_gloff_lam)
+
+model3.skeleton.animation[name:lr300_unoff_gloff_lam]:setlength(1):setflags(2)
+model4.skeleton.animation[name:sg550_gloff_lam]:copytrack()
+model3.skeleton.animation[name:lr300_unoff_gloff_lam]:pastetrack(0, 0)
+
+model3.skeleton.animation[name:m4_gloff_idle]:copykey(0)
+model3.skeleton.animation[name:lr300_unoff_gloff_lam]:pastekey(0):pastekey(-1)
+model3.skeleton.animation[name:lr300_unoff_gloff_lam].bone[name: l_finger*]:interpolate(-5, -1, true, true, 1.0)
+
+model3.skeleton.animation[name:lr300_unoff_gloff_lam].bone[name:r_*]:clonekey(0, 1, -1)
+model3.skeleton.animation[name:lr300_unoff_gloff_lam].bone[name:bip01_r_*]:clonekey(0, 1, -1)
+
+model3.skeleton.iksolver:simplelimb(r_hand, x, xz)
+model3.skeleton.animation[name:lr300_unoff_gloff_lam]:setikrefpose(0)
+model3.skeleton.animation[name:lr300_unoff_gloff_lam].bone[name:r_hand]:followbone(lead_gun, 0, 1, -1)
+model3.skeleton.iksolver:reset()
+
+// -------------- lr300_unoff_glon_lam from sg550_glon_lam --------------
+model3.skeleton.animation[name:lr300_unoff_lam]:duplicate(lr300_unoff_glon_lam)
+
+model3.skeleton.animation[name:lr300_unoff_glon_lam]:setlength(1):setflags(2)
+model4.skeleton.animation[name:sg550_glon_lam]:copytrack()
+model3.skeleton.animation[name:lr300_unoff_glon_lam]:pastetrack(0, 0)
+
+model3.skeleton.animation[name:m4_glon_idle]:copykey(0)
+model3.skeleton.animation[name:lr300_unoff_glon_lam]:pastekey(0)
+
+model3.skeleton.animation[name:lr300_unoff_glon_lam].bone[]:applydiff(0, -1, 1, -1)
+model3.skeleton.animation[name:lr300_unoff_glon_lam].bone[name:l_clavicle]:move(0.03, 0.02 ,0.0, 5,-20, 0,0):interpolate(1,5,true,false):interpolate(-20,-12,true,false)
+
+// -------------- lr300_unoff_headflash from sg550_headflash --------------
+model3.skeleton.animation[name:lr300_unoff_lam]:duplicate(lr300_unoff_headflash)
+model3.skeleton.animation[name:lr300_unoff_headflash]:setlength(1):setflags(2)
+model4.skeleton.animation[name:sg550_headflash]:copytrack()
+model3.skeleton.animation[name:lr300_unoff_headflash]:pastetrack(0, 0)
+model3.skeleton.animation[name:m4_idle]:copykey(0)
+model3.skeleton.animation[name:lr300_unoff_headflash]:pastekey(0)
+model3.skeleton.animation[name:lr300_unoff_headflash].bone[name!bip01_l_finger*]:applydiff(0, -1, 1, -1)
+model3.skeleton.animation[name:lr300_unoff_headflash]:pastekey(-1)
+model3.skeleton.animation[name:lr300_unoff_headflash].bone[name:bip01_l_finger*]:clonekey(-1, -7, -2):interpolate(-11, -7):interpolate(0,3)
+model3.skeleton.animation[name:lr300_unoff_headflash].bone[name:l_clavicle]:move(0, -0.08, 0,3,4):interpolate(0,3):interpolate(4,9)
+
+// -------------- lr300_unoff_gloff_headflash from sg550_gloff_headflash --------------
+model3.skeleton.animation[name:lr300_unoff_gloff_lam]:duplicate(lr300_unoff_gloff_headflash)
+model3.skeleton.animation[name:lr300_unoff_gloff_headflash]:setlength(1):setflags(2)
+model4.skeleton.animation[name:sg550_gloff_headflash]:copytrack()
+model3.skeleton.animation[name:lr300_unoff_gloff_headflash]:pastetrack(0, 0)
+model3.skeleton.animation[name:m4_gloff_idle]:copykey(0)
+model3.skeleton.animation[name:lr300_unoff_gloff_headflash]:pastekey(0)
+model3.skeleton.animation[name:lr300_unoff_gloff_headflash].bone[name!bip01_l_finger*]:applydiff(0, -1, 1, -1)
+model3.skeleton.animation[name:lr300_unoff_gloff_headflash]:pastekey(-1)
+model3.skeleton.animation[name:lr300_unoff_gloff_headflash].bone[name:bip01_l_finger*]:clonekey(-1, -7, -2):interpolate(-11, -7):interpolate(0,3)
+model3.skeleton.animation[name:lr300_unoff_gloff_headflash].bone[name:l_clavicle]:move(0, -0.08, 0,3,4):interpolate(0,3):interpolate(4,9)
+
+// -------------- lr300_unoff_glon_headflash from sg550_glon_headflash --------------
+model3.skeleton.animation[name:lr300_unoff_glon_lam]:duplicate(lr300_unoff_glon_headflash)
+model3.skeleton.animation[name:lr300_unoff_glon_headflash]:setlength(1):setflags(2)
+model4.skeleton.animation[name:sg550_glon_headflash]:copytrack()
+model3.skeleton.animation[name:lr300_unoff_glon_headflash]:pastetrack(0, 0)
+model3.skeleton.animation[name:m4_glon_idle]:copykey(0)
+model3.skeleton.animation[name:lr300_unoff_glon_headflash]:pastekey(0)
+model3.skeleton.animation[name:lr300_unoff_glon_headflash].bone[name!bip01_l_finger*]:applydiff(0, -1, 1, -1)
+model3.skeleton.animation[name:lr300_unoff_glon_headflash]:pastekey(-1)
+model3.skeleton.animation[name:lr300_unoff_glon_headflash].bone[name:bip01_l_finger*]:clonekey(-1, -7, -2):interpolate(-11, -7):interpolate(0,3)
+model3.skeleton.animation[name:lr300_unoff_glon_headflash].bone[name:l_clavicle]:move(0, -0.08, 0,3,4):interpolate(0,3):interpolate(4,9)
+
+// -------------- lr300_unoff_suicide from sg550_suicide --------------
+model3.skeleton.animation[name:m4_idle]:duplicate(lr300_unoff_suicide)
+model3.skeleton.animation[name:lr300_unoff_suicide]:setlength(2):setflags(2):setaccrue(0):setfalloff(0)
+model4.skeleton.animation[name:sg550_suicide]:copytrack()
+model3.skeleton.animation[name:lr300_unoff_suicide]:pastetrack(1, 0)
+model3.skeleton.animation[name:m4_idle]:copykey(0)
+model3.skeleton.animation[name:lr300_unoff_suicide]:pastekey(0)
+model3.skeleton.animation[name:lr300_unoff_suicide].bone[]:applydiff(0, 1, 2, -1)
+
+// -------------- lr300_unoff_suicide_end from sg550_suicide_end --------------
+model3.skeleton.animation[name:m4_idle]:duplicate(lr300_unoff_suicide_end)
+model3.skeleton.animation[name:lr300_unoff_suicide_end]:setlength(2):setflags(2):setaccrue(0):setfalloff(0)
+model4.skeleton.animation[name:sg550_suicide_end]:copytrack()
+model3.skeleton.animation[name:lr300_unoff_suicide_end]:pastetrack(0, 0)
+model3.skeleton.animation[name:lr300_unoff_suicide_end].bone[]:clonekey(-1,-2,-2)
+model3.skeleton.animation[name:m4_idle]:copykey(0)
+model3.skeleton.animation[name:lr300_unoff_suicide_end]:pastekey(-1)
+model3.skeleton.animation[name:lr300_unoff_suicide_end].bone[]:applydiff(-1, -2, 0, -2)
+
+// -------------- lr300_unoff_suicide_shoot from sg550_suicide_shoot --------------
+model3.skeleton.animation[name:m4_idle]:duplicate(lr300_unoff_suicide_shoot)
+model3.skeleton.animation[name:lr300_unoff_suicide_shoot]:setlength(2):setflags(2):setaccrue(0):setfalloff(0)
+model4.skeleton.animation[name:sg550_suicide_shoot]:copytrack()
+model3.skeleton.animation[name:lr300_unoff_suicide_shoot]:pastetrack(1, 0)
+model3.skeleton.animation[name:lr300_unoff_suicide]:copykey(-1)
+model3.skeleton.animation[name:lr300_unoff_suicide_shoot]:pastekey(0)
+model3.skeleton.animation[name:lr300_unoff_suicide_shoot].bone[]:applydiff(0, 1, 2, -1)
+
+// -------------- lr300_unoff_gloff_suicide from sg550_gloff_suicide --------------
+model3.skeleton.animation[name:m4_gloff_idle]:duplicate(lr300_unoff_gloff_suicide)
+model3.skeleton.animation[name:lr300_unoff_gloff_suicide]:setlength(2):setflags(2):setaccrue(0):setfalloff(0)
+model4.skeleton.animation[name:sg550_gloff_suicide]:copytrack()
+model3.skeleton.animation[name:lr300_unoff_gloff_suicide]:pastetrack(1, 0)
+model3.skeleton.animation[name:m4_gloff_idle]:copykey(0)
+model3.skeleton.animation[name:lr300_unoff_gloff_suicide]:pastekey(0)
+model3.skeleton.animation[name:lr300_unoff_gloff_suicide].bone[]:applydiff(0, 1, 2, -1)
+
+// -------------- lr300_unoff_gloff_suicide_end from sg550_gloff_suicide_end --------------
+model3.skeleton.animation[name:m4_gloff_idle]:duplicate(lr300_unoff_gloff_suicide_end)
+model3.skeleton.animation[name:lr300_unoff_gloff_suicide_end]:setlength(2):setflags(2):setaccrue(0):setfalloff(0)
+model4.skeleton.animation[name:sg550_gloff_suicide_end]:copytrack()
+model3.skeleton.animation[name:lr300_unoff_gloff_suicide_end]:pastetrack(0, 0)
+model3.skeleton.animation[name:lr300_unoff_gloff_suicide_end].bone[]:clonekey(-1,-2,-2)
+model3.skeleton.animation[name:m4_gloff_idle]:copykey(0)
+model3.skeleton.animation[name:lr300_unoff_gloff_suicide_end]:pastekey(-1)
+model3.skeleton.animation[name:lr300_unoff_gloff_suicide_end].bone[]:applydiff(-1, -2, 0, -2)
+
+// -------------- lr300_unoff_glon_suicide from sg550_glon_suicide --------------
+model3.skeleton.animation[name:m4_glon_idle]:duplicate(lr300_unoff_glon_suicide)
+model3.skeleton.animation[name:lr300_unoff_glon_suicide]:setlength(2):setflags(2):setaccrue(0):setfalloff(0)
+model4.skeleton.animation[name:sg550_glon_suicide]:copytrack()
+model3.skeleton.animation[name:lr300_unoff_glon_suicide]:pastetrack(1, 0)
+model3.skeleton.animation[name:m4_glon_idle]:copykey(0)
+model3.skeleton.animation[name:lr300_unoff_glon_suicide]:pastekey(0)
+model3.skeleton.animation[name:lr300_unoff_glon_suicide].bone[]:applydiff(0, 1, 2, -1)
+
+// -------------- lr300_unoff_glon_suicide_end from sg550_glon_suicide_end --------------
+model3.skeleton.animation[name:m4_glon_idle]:duplicate(lr300_unoff_glon_suicide_end)
+model3.skeleton.animation[name:lr300_unoff_glon_suicide_end]:setlength(2):setflags(2):setaccrue(0):setfalloff(0)
+model4.skeleton.animation[name:sg550_glon_suicide_end]:copytrack()
+model3.skeleton.animation[name:lr300_unoff_glon_suicide_end]:pastetrack(0, 0)
+model3.skeleton.animation[name:lr300_unoff_glon_suicide_end].bone[]:clonekey(-1,-2,-2)
+model3.skeleton.animation[name:m4_glon_idle]:copykey(0)
+model3.skeleton.animation[name:lr300_unoff_glon_suicide_end]:pastekey(-1)
+model3.skeleton.animation[name:lr300_unoff_glon_suicide_end].bone[]:applydiff(-1, -2, 0, -2)
+
+// -------------- rename all m4 anims --------------
+model3.skeleton.animation[name:m4_gl_changegrenade]:remove()
+model3.skeleton.animation[name:m4_gloff_lam]:remove()
+model3.skeleton.animation[name:m4_glon_lam]:remove()
+model3.skeleton.animation[name:m4_headflash]:remove()
+model3.skeleton.animation[name:m4_gloff_headflash]:remove()
+model3.skeleton.animation[name:m4_glon_headflash]:remove()
+model3.skeleton.animation[name:m4_tac*]:remove()
+model3.skeleton.animation[name:m4_*]:rename(lr300_unoff_*)
+
+// ------------- Compensate changed position of GL ------------- 
+model3.skeleton.animation[name:lr300_unoff_gl*].bone[name:l_clavicle]:move(0,-0.02, 0, 0, -1, 0, 0)
+model3.skeleton.animation[name:lr300_unoff_gl*].bone[name:l_finger0]:rotate(0,-5,0, 0, -1,0)
+
+model3.skeleton.animation[name:lr300_unoff_gl_deactivate].bone[name:l_clavicle]:move(0.02,0,0, 9, 30, 0, 0)
+model3.skeleton.animation[name:lr300_unoff_gl_activate].bone[name:l_clavicle]:move(0.02,0,0, 9, 25, 0, 0)
+
+
+// ------------- Correct dry animations ------------------------
+model3.skeleton.animation[name:lr300_unoff_dry].bone[name:l_clavicle]:move(0.1,-0.1,0.1,6,20,0):interpolate(2,9):interpolate(19,22)
+model3.skeleton.iksolver:simplelimb(l_hand, x, xz)
+model3.skeleton.animation[name:lr300_unoff_dry]:setikrefpose(0)
+model3.skeleton.animation[name:lr300_unoff_dry].bone[name:l_hand]:followbone(lead_gun, 0, 1, -1)
+model3.skeleton.iksolver:reset()
+
+model3.skeleton.animation[name:lr300_unoff_gloff_dry].bone[name:l_clavicle]:move(0.1,-0.1,0.1,6,20,0):interpolate(4,9):interpolate(19,22)
+model3.skeleton.iksolver:simplelimb(l_hand, x, xz)
+model3.skeleton.animation[name:lr300_unoff_gloff_dry]:setikrefpose(0)
+model3.skeleton.animation[name:lr300_unoff_gloff_dry].bone[name:l_hand]:followbone(lead_gun, 0, 1, -1)
+model3.skeleton.iksolver:reset()
+
+// ------------- Correct revival animations ------------------------
+
+model3.skeleton.animation[name:lr300_unoff_revival].bone[name:l_clavicle]:move(0.1,-0.1,0.1,5,14,0):move(0.1,-0.1,0.1,55,70,0):interpolate(4,7,1,1,0.7):interpolate(14,17,1,1,0.7):interpolate(54,57,1,1,0.7):interpolate(70,74,1,1,0.7)
+model3.skeleton.iksolver:simplelimb(l_hand, x, xz)
+model3.skeleton.animation[name:lr300_unoff_revival]:setikrefpose(0)
+model3.skeleton.animation[name:lr300_unoff_revival].bone[name:l_hand]:followbone(lead_gun, 0, 1, -1)
+model3.skeleton.iksolver:reset()
+model3.skeleton.animation[name:lr300_unoff_idle]:copykey(0)
+model3.skeleton.animation[name:lr300_unoff_revival]:pastekey(-1):pastekey(0)
+
+model3.skeleton.animation[name:lr300_unoff_revival].bone[expr:r_clavicle | r_upperarm | r_forearm | r_hand]:clonekey(-1, 71,-2)
+model3.skeleton.iksolver:simplelimb(r_hand, x, xz)
+model3.skeleton.animation[name:lr300_unoff_revival]:setikrefpose(-1)
+model3.skeleton.animation[name:lr300_unoff_revival].bone[name:r_hand]:followbone(lead_gun, -1, -2, 70)
+model3.skeleton.animation[name:lr300_unoff_revival]:setikrefpose(0)
+model3.skeleton.animation[name:lr300_unoff_revival].bone[name:r_hand]:followbone(lead_gun, 0, 0, 6)
+model3.skeleton.iksolver:reset()
+
+model3.skeleton.animation[name:lr300_unoff_gloff_revival].bone[name:l_clavicle]:move(0.2,-0.1,0.1,5,16,0):move(0.1,-0.1,0.1,55,70,0):interpolate(2,5,1,1,0.7)
+model3.skeleton.animation[name:lr300_unoff_gloff_revival].bone[name:l_clavicle]:move(0.03,-0.05,0.0,20,54,0):interpolate(16,20,1,1,0.7):interpolate(54,57,1,1,0.7):interpolate(70,74,1,1,0.7)
+
+model3.skeleton.iksolver:simplelimb(l_hand, x, xz)
+model3.skeleton.animation[name:lr300_unoff_gloff_revival]:setikrefpose(0)
+model3.skeleton.animation[name:lr300_unoff_gloff_revival].bone[name:l_hand]:followbone(lead_gun, 0, 1, -1)
+model3.skeleton.iksolver:reset()
+
+model3.skeleton.animation[name:lr300_unoff_gloff_revival].bone[expr:r_clavicle | r_upperarm | r_forearm | r_hand]:clonekey(0, 71,-1)
+model3.skeleton.iksolver:simplelimb(r_hand, x, xz)
+model3.skeleton.animation[name:lr300_unoff_gloff_revival]:setikrefpose(-1)
+model3.skeleton.animation[name:lr300_unoff_gloff_revival].bone[name:r_hand]:followbone(lead_gun, 0, -2, 71)
+model3.skeleton.iksolver:reset()
+model3.skeleton.animation[name:lr300_unoff_gloff_revival]:copykey(0):pastekey(-1)
+
+model3.skeleton.animation[name:lr300_unoff_revival].bone[expr:r_clavicle]:move(-0.02,0,0.06, 44,49):interpolate(40,44,1,0,1):interpolate(49,53,1,0,1)
+model3.skeleton.animation[name:lr300_unoff_gloff_revival].bone[expr:r_clavicle]:move(-0.02,0,0.06, 44,49):interpolate(40,44,1,0,1):interpolate(49,53,1,0,1)
+
+
+model3.skeleton.iksolver:simplelimb(l_hand, x, xz)
+model3.skeleton.animation[name:lr300_unoff_reload]:setikrefpose(0)
+model3.skeleton.animation[name:lr300_unoff_reload].bone[name:l_clavicle]:move(0.1, 0, 0, 30, 67)
+model3.skeleton.iksolver:reset()
+
+model3.skeleton.iksolver:simplelimb(l_hand, x, xz)
+model3.skeleton.animation[name:lr300_unoff_reload_empty]:setikrefpose(0)
+model3.skeleton.animation[name:lr300_unoff_reload_empty].bone[name:l_clavicle]:move(0.1, -0.05, -0.03, 5, 76)
+model3.skeleton.iksolver:reset()
+
+model3.skeleton.animation[name:lr300_unoff_idle]:copykey(0)
+model3.skeleton.animation[name:lr300_unoff_reload_empty]:pastekey(-1)
+model3.skeleton.animation[name:lr300_unoff_reload_empty].bone[expr:l_clavicle|l_upperarm|l_forearm|l_hand]:clonekey(-1, 91, -2)
+
+model3.skeleton.iksolver:simplelimb(l_hand, x, xz)
+model3.skeleton.animation[name:lr300_unoff_reload_empty]:setikrefpose(-1)
+model3.skeleton.animation[name:lr300_unoff_reload_empty].bone[name:l_hand]:followbone(lead_gun, -1, -2, 91)
+model3.skeleton.iksolver:reset()
+
+// ------------- correct finger in reload_empty -------------
+model3.skeleton.animation[name:lr300_unoff_reload_empty]:copykey(64, l_finger0 | l_finger01 | l_finger02):pastekey(8, 20)
+model3.skeleton.animation[name:lr300_unoff_reload_empty].bone[expr:l_finger0]:rotate(-5,0,14,8,20,1)
+model3.skeleton.animation[name:lr300_unoff_reload_empty].bone[expr:l_finger0 | l_finger01 | l_finger02]:interpolate(5,8,1,1,0.8)
+model3.skeleton.animation[name:lr300_unoff_reload_empty].bone[expr:l_clavicle]:move(0.022,0.03,0, 10, 20):interpolate(7,10,1,0,1)
+
+model3.skeleton.animation[name:lr300_unoff_gloff_reload_empty]:copykey(64, l_finger0 | l_finger01 | l_finger02):pastekey(8, 20)
+model3.skeleton.animation[name:lr300_unoff_gloff_reload_empty].bone[expr:l_finger0]:rotate(2,0,0,8,20,1)
+model3.skeleton.animation[name:lr300_unoff_gloff_reload_empty].bone[expr:l_finger0 | l_finger01 | l_finger02]:interpolate(5,8,1,1,0.8)
+model3.skeleton.animation[name:lr300_unoff_gloff_reload_empty].bone[expr:l_clavicle]:move(0.025,0.03,0, 10, 20):interpolate(7,10,1,0,1)
+
+
+// !!!!!!!!!!!!!!!  Tactical set !!!!!!!!!!!!!!!!!!!!!
+
+model3.skeleton.animation[name:lr300_unoff_idle]:duplicate(lr300_unoff_tact_idle)
+model4.skeleton.animation[name:sg550_tac_idle]:copytrack()
+model3.skeleton.animation[name:lr300_unoff_tact_idle]:setlength(2):pastetrack(0, 0)
+
+model3.skeleton.animation[name:lr300_unoff_walk]:duplicate(lr300_unoff_tact_walk)
+model4.skeleton.animation[name:sg550_tac_walk]:copytrack()
+model3.skeleton.animation[name:lr300_unoff_tact_walk]:setlength(2):pastetrack(0, 0)
+
+model3.skeleton.animation[name:lr300_unoff_walk_slow]:duplicate(lr300_unoff_tact_walk_slow)
+model4.skeleton.animation[name:sg550_tac_walk_slow]:copytrack()
+model3.skeleton.animation[name:lr300_unoff_tact_walk_slow]:setlength(2):pastetrack(0, 0)
+
+model3.skeleton.animation[name:lr300_unoff_walk_slow_down]:duplicate(lr300_unoff_tact_walk_slow_down)
+model4.skeleton.animation[name:sg550_tac_walk_slow_down]:copytrack()
+model3.skeleton.animation[name:lr300_unoff_tact_walk_slow_down]:setlength(2):pastetrack(0, 0)
+
+model3.skeleton.animation[name:lr300_unoff_walk_slow_super]:duplicate(lr300_unoff_tact_walk_slow_super)
+model4.skeleton.animation[name:sg550_tac_walk_slow_super]:copytrack()
+model3.skeleton.animation[name:lr300_unoff_tact_walk_slow_super]:setlength(2):pastetrack(0, 0)
+
+model3.skeleton.animation[name:lr300_unoff_aim_start]:duplicate(lr300_unoff_tact_aim_start)
+model4.skeleton.animation[name:sg550_tac_aim_start]:copytrack()
+model3.skeleton.animation[name:lr300_unoff_tact_aim_start]:setlength(2):pastetrack(0, 0)
+
+model3.skeleton.animation[name:lr300_unoff_aim_end]:duplicate(lr300_unoff_tact_aim_end)
+model4.skeleton.animation[name:sg550_tac_aim_end]:copytrack()
+model3.skeleton.animation[name:lr300_unoff_tact_aim_end]:setlength(2):pastetrack(0, 0)
+
+model3.skeleton.animation[name:lr300_unoff_aim]:duplicate(lr300_unoff_tact_aim)
+model4.skeleton.animation[name:sg550_tac_aim]:copytrack()
+model3.skeleton.animation[name:lr300_unoff_tact_aim]:setlength(2):pastetrack(0, 0)
+
+model3.skeleton.animation[name:lr300_unoff_aim_walk]:duplicate(lr300_unoff_tact_aim_walk)
+model4.skeleton.animation[name:sg550_tac_aim_walk]:copytrack()
+model3.skeleton.animation[name:lr300_unoff_tact_aim_walk]:setlength(2):pastetrack(0, 0)
+
+model3.skeleton.animation[name:lr300_unoff_aim_walk_left]:duplicate(lr300_unoff_tact_aim_walk_left)
+model4.skeleton.animation[name:sg550_tac_aim_walk_left]:copytrack()
+model3.skeleton.animation[name:lr300_unoff_tact_aim_walk_left]:setlength(2):pastetrack(0, 0)
+
+model3.skeleton.animation[name:lr300_unoff_aim_walk_right]:duplicate(lr300_unoff_tact_aim_walk_right)
+model4.skeleton.animation[name:sg550_tac_aim_walk_right]:copytrack()
+model3.skeleton.animation[name:lr300_unoff_tact_aim_walk_right]:setlength(2):pastetrack(0, 0)
+
+model3.skeleton.animation[name:lr300_unoff_aim_walk_scope]:duplicate(lr300_unoff_tact_aim_walk_scope)
+model4.skeleton.animation[name:sg550_tac_aim_walk_scope]:copytrack()
+model3.skeleton.animation[name:lr300_unoff_tact_aim_walk_scope]:setlength(2):pastetrack(0, 0)
+
+model3.skeleton.animation[name:lr300_unoff_shoot]:duplicate(lr300_unoff_tact_shoot)
+model4.skeleton.animation[name:sg550_tac_shoot]:copytrack()
+model3.skeleton.animation[name:lr300_unoff_tact_shoot]:setlength(2):pastetrack(0, 0)
+
+model3.skeleton.animation[name:lr300_unoff_aim_shoot]:duplicate(lr300_unoff_tact_aim_shoot)
+model4.skeleton.animation[name:sg550_tac_aim_shoot]:copytrack()
+model3.skeleton.animation[name:lr300_unoff_tact_aim_shoot]:setlength(2):pastetrack(0, 0)
+
+model3.skeleton.animation[name:lr300_unoff_aim_shoot_scope]:duplicate(lr300_unoff_tact_aim_shoot_scope)
+model4.skeleton.animation[name:sg550_tac_aim_shoot_scope]:copytrack()
+model3.skeleton.animation[name:lr300_unoff_tact_aim_shoot_scope]:setlength(2):pastetrack(0, 0)
+
+model3.skeleton.animation[name:lr300_unoff_dry_empty]:duplicate(lr300_unoff_tact_dry_empty)
+model4.skeleton.animation[name:sg550_tac_dry_empty]:copytrack()
+model3.skeleton.animation[name:lr300_unoff_tact_dry_empty]:setlength(2):pastetrack(0, 0)
+
+model3.skeleton.animation[name:lr300_unoff_aim_dry]:duplicate(lr300_unoff_tact_aim_dry)
+model4.skeleton.animation[name:sg550_tac_aim_dry]:copytrack()
+model3.skeleton.animation[name:lr300_unoff_tact_aim_dry]:setlength(2):pastetrack(0, 0)
+
+model3.skeleton.animation[name:lr300_unoff_headflash]:duplicate(lr300_unoff_tact_headflash)
+model4.skeleton.animation[name:sg550_tac_headflash]:copytrack()
+model3.skeleton.animation[name:lr300_unoff_tact_headflash]:setlength(2):pastetrack(0, 0)
+
+//------------------ need IK solve correct after clavicle correction -------------------
+model3.skeleton.animation[name:lr300_unoff_draw]:duplicate(lr300_unoff_tact_draw)
+model4.skeleton.animation[name:sg550_tac_draw]:copytrack()
+model3.skeleton.animation[name:lr300_unoff_tact_draw]:setlength(2):pastetrack(0, 0)
+
+model3.skeleton.animation[name:lr300_unoff_hide]:duplicate(lr300_unoff_tact_hide)
+model4.skeleton.animation[name:sg550_tac_hide]:copytrack()
+model3.skeleton.animation[name:lr300_unoff_tact_hide]:setlength(2):pastetrack(0, 0)
+
+model3.skeleton.animation[name:lr300_unoff_sprint_start]:duplicate(lr300_unoff_tact_sprint_start)
+model4.skeleton.animation[name:sg550_tac_sprint_start]:copytrack()
+model3.skeleton.animation[name:lr300_unoff_tact_sprint_start]:setlength(2):pastetrack(0, 0)
+
+model3.skeleton.animation[name:lr300_unoff_sprint_end]:duplicate(lr300_unoff_tact_sprint_end)
+model4.skeleton.animation[name:sg550_tac_sprint_end]:copytrack()
+model3.skeleton.animation[name:lr300_unoff_tact_sprint_end]:setlength(2):pastetrack(0, 0)
+
+model3.skeleton.animation[name:lr300_unoff_sprint]:duplicate(lr300_unoff_tact_sprint)
+model4.skeleton.animation[name:sg550_tac_sprint]:copytrack()
+model3.skeleton.animation[name:lr300_unoff_tact_sprint]:setlength(2):pastetrack(0, 0)
+
+model3.skeleton.animation[name:lr300_unoff_dry]:duplicate(lr300_unoff_tact_dry)
+model4.skeleton.animation[name:sg550_tac_dry]:copytrack()
+model3.skeleton.animation[name:lr300_unoff_tact_dry]:setlength(2):pastetrack(0, 0)
+
+model3.skeleton.animation[name:lr300_unoff_firemode_1_to_a]:duplicate(lr300_unoff_tact_firemode_1_to_a)
+model4.skeleton.animation[name:sg550_tac_firemode_a_to_1]:copytrack()
+model3.skeleton.animation[name:lr300_unoff_tact_firemode_1_to_a]:setlength(2):pastetrack(0, 0)
+
+model3.skeleton.animation[name:lr300_unoff_firemode_a_to_1]:duplicate(lr300_unoff_tact_firemode_a_to_1)
+model4.skeleton.animation[name:sg550_tac_firemode_1_to_a]:copytrack()
+model3.skeleton.animation[name:lr300_unoff_tact_firemode_a_to_1]:setlength(2):pastetrack(0, 0)
+
+model3.skeleton.animation[name:lr300_unoff_lam]:duplicate(lr300_unoff_tact_lam)
+model4.skeleton.animation[name:sg550_tac_lam]:copytrack()
+model3.skeleton.animation[name:lr300_unoff_tact_lam]:setlength(2):pastetrack(0, 0)
+
+model3.skeleton.animation[name:lr300_unoff_suicide]:duplicate(lr300_unoff_tact_suicide)
+model4.skeleton.animation[name:sg550_tac_suicide]:copytrack()
+model3.skeleton.animation[name:lr300_unoff_tact_suicide]:setlength(2):pastetrack(0, 0)
+
+model3.skeleton.animation[name:lr300_unoff_suicide_end]:duplicate(lr300_unoff_tact_suicide_end)
+model4.skeleton.animation[name:sg550_tac_suicide_end]:copytrack()
+model3.skeleton.animation[name:lr300_unoff_tact_suicide_end]:setlength(2):pastetrack(0, 0)
+
+model3.skeleton.animation[name:lr300_unoff_tact_*].bone[name:r_clavicle]:move(0.007, -0.01, 0.05, 0,-1, 0,0)
+model3.skeleton.animation[name:lr300_unoff_tact_*].bone[name:l_clavicle]:move(0.0, -0.02, 0.01, 0,-1, 0,0)
+
+model3.skeleton.iksolver:simplelimb(l_hand, x, xz)
+model3.skeleton.animation[name:lr300_unoff_tact_draw]:setikrefpose(-1)
+model3.skeleton.animation[name:lr300_unoff_tact_draw].bone[name:l_hand]:followbone(lead_gun, -1, 1, -1)
+model3.skeleton.animation[name:lr300_unoff_tact_hide]:setikrefpose(0)
+model3.skeleton.animation[name:lr300_unoff_tact_hide].bone[name:l_hand]:followbone(lead_gun, 0, 1, -1)
+model3.skeleton.animation[name:lr300_unoff_tact_sprint_start]:setikrefpose(0)
+model3.skeleton.animation[name:lr300_unoff_tact_sprint_start].bone[name:l_hand]:followbone(lead_gun, 0, 1, -1)
+model3.skeleton.animation[name:lr300_unoff_tact_sprint_end]:setikrefpose(-1)
+model3.skeleton.animation[name:lr300_unoff_tact_sprint_end].bone[name:l_hand]:followbone(lead_gun, -1, 1, -1)
+model3.skeleton.animation[name:lr300_unoff_tact_sprint_end]:setikrefpose(0)
+model3.skeleton.animation[name:lr300_unoff_tact_sprint].bone[name:l_hand]:followbone(lead_gun, -1, 1, -1)
+model3.skeleton.animation[name:lr300_unoff_tact_firemode_1_to_a]:setikrefpose(0)
+model3.skeleton.animation[name:lr300_unoff_tact_firemode_1_to_a].bone[name:l_hand]:followbone(lead_gun, -1, 1, -1)
+model3.skeleton.animation[name:lr300_unoff_tact_firemode_a_to_1]:setikrefpose(0)
+model3.skeleton.animation[name:lr300_unoff_tact_firemode_a_to_1].bone[name:l_hand]:followbone(lead_gun, -1, 1, -1)
+model3.skeleton.iksolver:reset()
+
+model3.skeleton.iksolver:simplelimb(r_hand, x, xz)
+model3.skeleton.animation[name:lr300_unoff_tact_draw]:setikrefpose(-1)
+model3.skeleton.animation[name:lr300_unoff_tact_draw].bone[name:r_hand]:followbone(lead_gun, -1, 1, -1)
+model3.skeleton.animation[name:lr300_unoff_tact_hide]:setikrefpose(0)
+model3.skeleton.animation[name:lr300_unoff_tact_hide].bone[name:r_hand]:followbone(lead_gun, 0, 1, -1)
+model3.skeleton.animation[name:lr300_unoff_tact_sprint_start]:setikrefpose(0)
+model3.skeleton.animation[name:lr300_unoff_tact_sprint_start].bone[name:r_hand]:followbone(lead_gun, 0, 1, -1)
+model3.skeleton.animation[name:lr300_unoff_tact_sprint_end]:setikrefpose(-1)
+model3.skeleton.animation[name:lr300_unoff_tact_sprint_end].bone[name:r_hand]:followbone(lead_gun, -1, 1, -1)
+model3.skeleton.animation[name:lr300_unoff_tact_sprint_end]:setikrefpose(0)
+model3.skeleton.animation[name:lr300_unoff_tact_sprint].bone[name:r_hand]:followbone(lead_gun, -1, 1, -1)
+model3.skeleton.animation[name:lr300_unoff_tact_lam]:setikrefpose(0)
+model3.skeleton.animation[name:lr300_unoff_tact_lam].bone[name:r_hand]:followbone(lead_gun, -1, 1, -1)
+model3.skeleton.iksolver:reset()
+
+
+model3.skeleton.animation[name:lr300_unoff_tact_suicide].bone[name!lead_gun]:clonekey(0,1,-1)
+model3.skeleton.animation[name:lr300_unoff_tact_suicide].bone[expr:l_clavicle | r_clavicle]:followbone(lead_gun, 0, 1, -1)
+model3.skeleton.animation[name:lr300_unoff_tact_suicide_end].bone[name!lead_gun]:clonekey(-1,0,-2)
+model3.skeleton.animation[name:lr300_unoff_tact_suicide_end].bone[expr:l_clavicle | r_clavicle]:followbone(lead_gun, -1, -2, 0)
+
+//------------------ lr300_unoff_tact_reload_empty ---------------------------------------- 
+model3.skeleton.animation[name:lr300_unoff_reload_empty]:duplicate(lr300_unoff_tact_reload_empty)
+model3.skeleton.animation[name:lr300_unoff_tact_idle]:copykey(0)
+model3.skeleton.animation[name:lr300_unoff_tact_reload_empty]:pastekey(-1):pastekey(0)
+
+model3.skeleton.animation[name:lr300_unoff_tact_reload_empty].bone[name:bip01_r_finger*]:clonekey(0, 1, -2)
+model3.skeleton.animation[name:lr300_unoff_tact_reload_empty].bone[name:r_finger*]:clonekey(0, 1, -2)
+model3.skeleton.iksolver:simplelimb(r_hand, x, xz)
+model3.skeleton.animation[name:lr300_unoff_tact_reload_empty]:setikrefpose(-1)
+model3.skeleton.animation[name:lr300_unoff_tact_reload_empty].bone[name:r_hand]:followbone(lead_gun, -1, -2, 0)
+model3.skeleton.iksolver:reset()
+
+
+model3.skeleton.animation[name:lr300_unoff_tact_reload_empty].bone[expr:l_clavicle | l_upperarm | l_forearm | l_forearm_twist | l_hand]:clonekey(-1, 85, -2)
+model3.skeleton.animation[name:lr300_unoff_tact_reload_empty].bone[name:bip01_l_finger*]:clonekey(-1, 83, -2)
+model3.skeleton.animation[name:lr300_unoff_tact_reload_empty].bone[name:l_finger*]:clonekey(-1, 83, -2)
+
+model4.skeleton.animation[name:sg550_tac_reload]:copykey(7, bip01_l_finger1 | bip01_l_finger11 | bip01_l_finger12 | bip01_l_finger2 | bip01_l_finger21 | bip01_l_finger22 | bip01_l_finger3 | bip01_l_finger31 | bip01_l_finger32 | bip01_l_finger4 | bip01_l_finger41 | bip01_l_finger42 | l_finger0 | l_finger01 | l_finger02 )
+model3.skeleton.animation[name:lr300_unoff_tact_reload_empty]:pastekey(80)
+model3.skeleton.animation[name:lr300_unoff_tact_reload_empty].bone[name:bip01_l_finger*]:interpolate(77, 80):interpolate(80, 83)
+model3.skeleton.animation[name:lr300_unoff_tact_reload_empty].bone[name:l_finger*]:interpolate(77, 80):interpolate(80, 83)
+
+model3.skeleton.animation[name:lr300_unoff_tact_reload_empty]:copykey(81, l_hand | bip01_l_finger1 | bip01_l_finger11 | bip01_l_finger12 | bip01_l_finger2 | bip01_l_finger21 | bip01_l_finger22 | bip01_l_finger3 | bip01_l_finger31 | bip01_l_finger32 | bip01_l_finger4 | bip01_l_finger41 | bip01_l_finger42 | l_finger0 | l_finger01 | l_finger02 ):pastekey(4)
+model3.skeleton.animation[name:lr300_unoff_tact_reload_empty].bone[name:bip01_l_finger*]:interpolate(0, 4):interpolate(4, 9):interpolate(77, 80):interpolate(80, 83)
+model3.skeleton.animation[name:lr300_unoff_tact_reload_empty].bone[name:l_finger*]:interpolate(0, 4):interpolate(4, 9):interpolate(77, 80):interpolate(80, 83)
+
+model3.skeleton.iksolver:simplelimb(l_hand, x, xz)
+model3.skeleton.animation[name:lr300_unoff_tact_reload_empty]:setikrefpose(0)
+model3.skeleton.animation[name:lr300_unoff_tact_reload_empty].bone[name:l_clavicle]:interpolate(0, 6)
+model3.skeleton.animation[name:lr300_unoff_tact_reload_empty]:setikrefpose(4)
+model3.skeleton.animation[name:lr300_unoff_tact_reload_empty].bone[name:l_hand]:move(-0.2, 0, 0.01, 4, 4, 0, 0)
+model3.skeleton.animation[name:lr300_unoff_tact_reload_empty]:setikrefpose(0)
+model3.skeleton.animation[name:lr300_unoff_tact_reload_empty].bone[name:l_hand]:interpolate(0, 4, 1,1,1.2):interpolate(4, 7,1,1,0.8)
+model3.skeleton.iksolver:reset()
+
+model3.skeleton.iksolver:simplelimb(l_hand, x, xz)
+model3.skeleton.animation[name:lr300_unoff_tact_reload_empty]:setikrefpose(-1)
+model3.skeleton.animation[name:lr300_unoff_tact_reload_empty].bone[name:l_hand]:followbone(lead_gun, -1, -2, 85)
+model3.skeleton.animation[name:lr300_unoff_tact_reload_empty]:setikrefpose(0)
+model3.skeleton.animation[name:lr300_unoff_tact_reload_empty].bone[name:l_hand]:move(-0.06,0,0.04,5,5,0,0):interpolate(0,5,1,1,1.25):interpolate(5,9,1,1,0.8)
+model3.skeleton.animation[name:lr300_unoff_tact_reload_empty].bone[name:l_hand]:move(-0.05,-0.05,0,80,80,0,0)
+model3.skeleton.iksolver:reset()
+
+model3.skeleton.animation[name:lr300_unoff_tact_reload_empty].bone[name:l_hand]:clonekey(75, 76, 80)
+model3.skeleton.animation[name:lr300_unoff_tact_reload_empty].bone[expr:l_clavicle | l_upperarm |  l_forearm_twist| l_forearm | l_hand]:interpolate(80,85,1,1,0.8)
+model3.skeleton.animation[name:lr300_unoff_tact_reload_empty].bone[expr:l_clavicle | l_upperarm |  l_forearm_twist| l_forearm]:interpolate(75,80,1,1,1.2)
+
+//------------------ lr300_unoff_tact_reload ----------------------------------------
+model3.skeleton.animation[name:lr300_unoff_reload]:duplicate(lr300_unoff_tact_reload)
+model3.skeleton.animation[name:lr300_unoff_tact_idle]:copykey(0)
+model3.skeleton.animation[name:lr300_unoff_tact_reload]:pastekey(-1):pastekey(0)
+
+model3.skeleton.animation[name:lr300_unoff_tact_reload].bone[name!lead_gun]:clonekey(-1, 80, -2)
+
+model3.skeleton.iksolver:simplelimb(r_hand, x, xz)
+model3.skeleton.animation[name:lr300_unoff_tact_reload]:setikrefpose(-1)
+model3.skeleton.animation[name:lr300_unoff_tact_reload].bone[name:r_hand]:followbone(lead_gun, -1, -2, 1)
+model3.skeleton.iksolver:reset()
+
+model3.skeleton.animation[name:lr300_unoff_tact_reload].bone[name:bip01_r_finger*]:clonekey(0, 1, -1)
+model3.skeleton.animation[name:lr300_unoff_tact_reload].bone[name:r_finger*]:clonekey(0, 1, -1)
+
+model3.skeleton.iksolver:simplelimb(l_hand, x, xz)
+model3.skeleton.animation[name:lr300_unoff_tact_reload]:setikrefpose(-1)
+model3.skeleton.animation[name:lr300_unoff_tact_reload].bone[name:l_hand]:followbone(lead_gun, -1, -2, 80)
+model3.skeleton.iksolver:reset()
+
+model4.skeleton.animation[name:sg550_tac_reload]:copykey(7, bip01_l_finger1 | bip01_l_finger11 | bip01_l_finger12 | bip01_l_finger2 | bip01_l_finger21 | bip01_l_finger22 | bip01_l_finger3 | bip01_l_finger31 | bip01_l_finger32 | bip01_l_finger4 | bip01_l_finger41 | bip01_l_finger42 | l_finger0 | l_finger01 | l_finger02 )
+model3.skeleton.animation[name:lr300_unoff_tact_reload]:pastekey(73)
+model3.skeleton.animation[name:lr300_unoff_tact_reload].bone[name:bip01_l_finger*]:clonekey(73, 73, 75):interpolate(75, 80)
+
+model3.skeleton.animation[name:lr300_unoff_tact_reload_empty]:copytrack(78, 83, l_clavicle | l_upperarm | l_forearm | l_forearm_twist| l_hand | bip01_l_finger1 | bip01_l_finger11 | bip01_l_finger12 | bip01_l_finger2 | bip01_l_finger21 | bip01_l_finger22 | bip01_l_finger3 | bip01_l_finger31 | bip01_l_finger32 | bip01_l_finger4 | bip01_l_finger41 | bip01_l_finger42 | l_finger0 | l_finger01 | l_finger02)
+model3.skeleton.animation[name:lr300_unoff_tact_reload]:pastetrack(70,0)
+
+model3.skeleton.animation[name:lr300_unoff_tact_reload].bone[name:bip01_l_*]:interpolate(66,72,1,1,1.0):interpolate(75,80,1,1,1.2)
+model3.skeleton.animation[name:lr300_unoff_tact_reload].bone[name:l_*]:interpolate(66,72,1,1,1.0):interpolate(75,80,1,1,1.2)
+
+model3.skeleton.animation[name:lr300_unoff_tact_reload_empty]:copytrack(0, 5, l_clavicle | l_upperarm | l_forearm | l_forearm_twist| l_hand | bip01_l_finger1 | bip01_l_finger11 | bip01_l_finger12 | bip01_l_finger2 | bip01_l_finger21 | bip01_l_finger22 | bip01_l_finger3 | bip01_l_finger31 | bip01_l_finger32 | bip01_l_finger4 | bip01_l_finger41 | bip01_l_finger42 | l_finger0 | l_finger01 | l_finger02)
+model3.skeleton.animation[name:lr300_unoff_tact_reload]:pastetrack(0,0)
+model3.skeleton.animation[name:lr300_unoff_tact_reload].bone[name:bip01_l_*]:interpolate(4,8,1,1,1.2)
+model3.skeleton.animation[name:lr300_unoff_tact_reload].bone[name:l_*]:interpolate(4,8,1,1,1.2)
+
+//------------------ lr300_unoff_tact_revival ----------------------------------------
+model3.skeleton.animation[name:lr300_unoff_revival]:duplicate(lr300_unoff_tact_revival)
+model3.skeleton.animation[name:lr300_unoff_tact_idle]:copykey(0)
+model3.skeleton.animation[name:lr300_unoff_tact_revival]:pastekey(0):pastekey(-1)
+model3.skeleton.animation[name:lr300_unoff_tact_revival].bone[name:bip01_l_*]:clonekey(0, 1,-1)
+model3.skeleton.animation[name:lr300_unoff_tact_revival].bone[name:l_*]:clonekey(0, 1,-1)
+model3.skeleton.animation[name:lr300_unoff_tact_revival].bone[name:l_clavicle]:followbone(lead_gun, 0, 1, -1)
+
+model3.skeleton.animation[name:lr300_unoff_tact_revival].bone[name:bip01_r_finger*]:clonekey(0, 1,14):clonekey(0, 58,-1)
+model3.skeleton.animation[name:lr300_unoff_tact_revival].bone[name:r_finger*]:clonekey(0, 1,14):clonekey(0, 58,-1)
+model3.skeleton.animation[name:lr300_unoff_tact_revival].bone[expr:r_upperarm | r_forearm | r_forearm_twist | r_hand]:clonekey(-1, 58,-2)
+model3.skeleton.animation[name:lr300_unoff_tact_revival].bone[expr:r_clavicle | r_upperarm | r_forearm | r_forearm_twist | r_hand]:clonekey(0,1,15)
+
+
+model3.skeleton.iksolver:simplelimb(r_hand, x, xz)
+model3.skeleton.animation[name:lr300_unoff_tact_revival]:setikrefpose(0)
+model3.skeleton.animation[name:lr300_unoff_tact_revival].bone[name:r_hand]:followbone(lead_gun, 0, 1, 15)
+model3.skeleton.iksolver:reset()
+
+model3.skeleton.iksolver:simplelimb(r_hand, x, xz)
+model3.skeleton.animation[name:lr300_unoff_tact_revival]:setikrefpose(0)
+model3.skeleton.animation[name:lr300_unoff_tact_revival].bone[name:r_hand]:followbone(lead_gun, -1, -2, 56)
+model3.skeleton.iksolver:reset()
+
+// correct left hand in aim anims
+model3.skeleton.iksolver:simplelimb(l_hand, x, xz)
+model3.skeleton.animation[name:lr300_unoff_aim]:setikrefpose(0)
+model3.skeleton.animation[name:lr300_unoff_aim].bone[name:l_clavicle]:move(-0.05,0.05,-0.05, 0,-1)
+model3.skeleton.animation[name:lr300_unoff_aim_walk*].bone[name:l_clavicle]:move(-0.05,0.05,-0.05, 0,-1)
+model3.skeleton.animation[name:lr300_unoff_aim_shoot*].bone[name:l_clavicle]:move(-0.05,0.05,-0.05, 0,-1)
+model3.skeleton.animation[name:lr300_unoff_aim_dry*].bone[name:l_clavicle]:move(-0.05,0.05,-0.05, 0,-1)
+model3.skeleton.iksolver:reset()
+
+model3.skeleton.animation[name:lr300_unoff_aim]:copykey(0)
+model3.skeleton.animation[name:lr300_unoff_aim_start]:pastekey(1, -1)
+model3.skeleton.iksolver:simplelimb(l_hand, x, xz)
+model3.skeleton.animation[name:lr300_unoff_aim_start]:setikrefpose(-1)
+model3.skeleton.animation[name:lr300_unoff_aim_start].bone[name:l_clavicle]:interpolate(0,8,1,1,0.8)
+model3.skeleton.iksolver:reset()
+
+model3.skeleton.animation[name:lr300_unoff_tact_aim_start]:copytrack(0, -1, lead_gun)
+model3.skeleton.animation[name:lr300_unoff_aim_start]:pastetrack(1,0)
+model3.skeleton.iksolver:simplelimb(l_hand, x, xz)
+model3.skeleton.animation[name:lr300_unoff_aim_start]:setikrefpose(0)
+model3.skeleton.animation[name:lr300_unoff_aim_start].bone[name:l_hand]:followbone(lead_gun, 0, -1, 1)
+model3.skeleton.iksolver:reset()
+model3.skeleton.iksolver:simplelimb(r_hand, x, xz)
+model3.skeleton.animation[name:lr300_unoff_aim_start]:setikrefpose(0)
+model3.skeleton.animation[name:lr300_unoff_aim_start].bone[name:r_hand]:followbone(lead_gun, 0, -1, 1)
+model3.skeleton.iksolver:reset()
+
+model3.skeleton.animation[name:lr300_unoff_aim]:copykey(0)
+model3.skeleton.animation[name:lr300_unoff_aim_end]:pastekey(0)
+model3.skeleton.iksolver:simplelimb(l_hand, x, xz)
+model3.skeleton.animation[name:lr300_unoff_aim_end]:setikrefpose(-1)
+model3.skeleton.animation[name:lr300_unoff_aim_end].bone[name:l_clavicle]:interpolate(0,5)
+model3.skeleton.iksolver:reset()
+
+
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! save all !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+model1.skeleton:saveomf(lr300_unoff\wpn_lr300_unoff_hud_animation.omf):resetmotionrefs():addmotionref(dynamics\weapons\wpn_lr300\wpn_lr300_unoff_hud_animation)
+model1:savetofile(lr300_unoff\wpn_lr300_unoff_hud.ogf)
+
+model3.skeleton:saveomf(lr300_unoff\wpn_hand_lr300_hud_animation.omf)
+
+
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! World model !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
+model1.mesh.child[]:filterbone(s_pn23 | s_specter | s_aimpoint | s_aimpoint_metka | s_aimpoint_lense | s_eot | s_eot_metka | ammo1 | ammo2 | ammo_additional)
+model1.mesh:removecollapsedchildren()
+
+model1.mesh.child[]:scale(0.65, 0.65, 0.65):move(-0.0831, 0.24, -0.29)
+model1.skeleton:uniformscale(0.65)
+model1.skeleton.bone[name:wpn_body]:move(-0.0831, 0.24, -0.29)
+
+model2:loadfromfile(sources\scope1_eotech_from_sig552_world.ogf)
+model2.mesh.child0:copy()
+model1.mesh.child0:paste():rebind(s_eot):move(0, -0.009, -0.035)
+model2:unload()
+
+model2:loadfromfile(sources\scope2_aimpoint_from_sig552_world.ogf)
+model2.mesh.child0:copy()
+model1.mesh.child0:paste():rebind(s_aimpoint):move(0, -0.009, -0.035)
+model2.mesh.child1:copy()
+model1.mesh.child0:paste():rebind(s_aimpoint):move(0, -0.009, -0.035)
+model2:unload()
+
+model2:loadfromfile(sources\scope3_elcan_from_sig552_world.ogf)
+model2.mesh.child0:copy()
+model1.mesh.child0:paste():rebind(s_specter):move(0, -0.009, -0.035)
+model2.mesh.child1:copy()
+model1.mesh.child0:paste():rebind(s_specter):move(0, -0.009, -0.035)
+model2:unload()
+
+model2:loadfromfile(sources\scope4_pn23_from_sig552_world.ogf)
+model2.mesh.child0:copy()
+model1.mesh.child0:paste():rebind(s_pn23):move(0, -0.009, -0.035)
+model2.mesh.child1:copy()
+model1.mesh.child0:paste():rebind(s_pn23):move(0, -0.009, -0.035)
+model2:unload()
+
+model1.skeleton.animation[name!idle]:remove()
+model1.skeleton.animation[name:idle]:copybindposekey()
+model1.skeleton.animation[name:idle]:pastekey(0, -1)
+model1.skeleton.animation[name:idle]:duplicate(idle_jammed)
+
+model1.skeleton.animation[name:idle].bone[name:shell]:setorientation(180,0,0, 0,-1):setposition(0,0,0, 0,-1,0)
+model1.skeleton.animation[name:idle_jammed].bone[name:bolt]:move(0,0,-0.025,0,-1,0)
+
+model1.skeleton.animation[name:idle]:duplicate(shoot)
+model1.skeleton.animation[name:shoot]:setlength(5):setflags(2):setaccrue(0):setfalloff(0)
+model1.skeleton.animation[name:shoot].bone[name:bolt]:move(0,0,-0.069,1,1,0):interpolate(1,4)
+
+model1.skeleton.animation[name:idle]:duplicate(idle_empty)
+model1.skeleton.animation[name:idle_empty].bone[name:bolt]:move(0,0,-0.069,0,-1,0)
+
+model1.skeleton.animation[name:idle]:duplicate(idle_gl_on)
+model1.skeleton.animation[name:idle_gl_on].bone[name:wpn_launcher_sight2]:rotate(-90,0,0, 0,-1,1)
+
+model1.skeleton.animation[name:idle_jammed]:duplicate(idle_gl_on_jammed)
+model1.skeleton.animation[name:idle_gl_on_jammed].bone[name:wpn_launcher_sight2]:rotate(-90,0,0, 0,-1,1)
+
+model1.skeleton.animation[name:idle_empty]:duplicate(idle_gl_on_empty)
+model1.skeleton.animation[name:idle_gl_on_empty].bone[name:wpn_launcher_sight2]:rotate(-90,0,0, 0,-1,1)
+
+model1.skeleton.bone[expr:wpn_body | sil_long | sil_short | wpn_launcher | wpn_launcher_barrel | stock | stock_mod | stock_mod2 | mag_30 | mag_45 | mag_60| ironsight | ironsight_fore |laser |s_eot | s_aimpoint| s_specter |s_pn23 |fore_mod | fore | barrel | barrel_long ]:generateshape(box):setmaterial(objects\large_weapon)
+model1.mesh:calcbounds()
+
+model1.skeleton:saveomf(lr300_unoff\wpn_lr300_unoff_world_animation.omf):resetmotionrefs():addmotionref(dynamics\weapons\wpn_lr300\wpn_lr300_unoff_world_animation)
+model1:savetofile(lr300_unoff\wpn_lr300_unoff_world.ogf)
