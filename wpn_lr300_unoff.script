@@ -828,9 +828,25 @@ model3.skeleton.animation[name:lr300_unoff_shoot]:duplicate(lr300_unoff_tact_sho
 model4.skeleton.animation[name:sg550_tac_shoot]:copytrack()
 model3.skeleton.animation[name:lr300_unoff_tact_shoot]:setlength(2):pastetrack(0, 0)
 
+model3.skeleton.animation[name:lr300_unoff_shoot]:duplicate(lr300_unoff_tact_shoot1)
+model4.skeleton.animation[name:sg550_tac_shoot1]:copytrack()
+model3.skeleton.animation[name:lr300_unoff_tact_shoot1]:setlength(2):pastetrack(0, 0)
+
+model3.skeleton.animation[name:lr300_unoff_shoot]:duplicate(lr300_unoff_tact_shoot2)
+model4.skeleton.animation[name:sg550_tac_shoot2]:copytrack()
+model3.skeleton.animation[name:lr300_unoff_tact_shoot2]:setlength(2):pastetrack(0, 0)
+
 model3.skeleton.animation[name:lr300_unoff_aim_shoot]:duplicate(lr300_unoff_tact_aim_shoot)
 model4.skeleton.animation[name:sg550_tac_aim_shoot]:copytrack()
 model3.skeleton.animation[name:lr300_unoff_tact_aim_shoot]:setlength(2):pastetrack(0, 0)
+
+model3.skeleton.animation[name:lr300_unoff_aim_shoot]:duplicate(lr300_unoff_tact_aim_shoot1)
+model4.skeleton.animation[name:sg550_tac_aim_shoot1]:copytrack()
+model3.skeleton.animation[name:lr300_unoff_tact_aim_shoot1]:setlength(2):pastetrack(0, 0)
+
+model3.skeleton.animation[name:lr300_unoff_aim_shoot]:duplicate(lr300_unoff_tact_aim_shoot2)
+model4.skeleton.animation[name:sg550_tac_aim_shoot2]:copytrack()
+model3.skeleton.animation[name:lr300_unoff_tact_aim_shoot2]:setlength(2):pastetrack(0, 0)
 
 model3.skeleton.animation[name:lr300_unoff_aim_shoot_scope]:duplicate(lr300_unoff_tact_aim_shoot_scope)
 model4.skeleton.animation[name:sg550_tac_aim_shoot_scope]:copytrack()
@@ -1090,7 +1106,8 @@ model1.mesh:removecollapsedchildren()
 
 model1.mesh.child[]:scale(0.65, 0.65, 0.65):move(-0.0831, 0.24, -0.29)
 model1.skeleton:uniformscale(0.65)
-model1.skeleton.bone[name:wpn_body]:move(-0.0831, 0.24, -0.29)
+model1.skeleton.bone[name:wpn_body]:move(-0.0831, 0.235, -0.29)
+model1.skeleton.bone[name:wpn_launcher_sight2]:move(0, 0.183, 0.228, 1)
 
 model2:loadfromfile(sources\scope1_eotech_from_sig552_world.ogf)
 model2.mesh.child0:copy()
@@ -1142,7 +1159,10 @@ model1.skeleton.animation[name:idle_gl_on_jammed].bone[name:wpn_launcher_sight2]
 model1.skeleton.animation[name:idle_empty]:duplicate(idle_gl_on_empty)
 model1.skeleton.animation[name:idle_gl_on_empty].bone[name:wpn_launcher_sight2]:rotate(-90,0,0, 0,-1,1)
 
-model1.skeleton.bone[expr:wpn_body | sil_long | sil_short | wpn_launcher | wpn_launcher_barrel | stock | stock_mod | stock_mod2 | mag_30 | mag_45 | mag_60| ironsight | ironsight_fore |laser |s_eot | s_aimpoint| s_specter |s_pn23 |fore_mod | fore | barrel | barrel_long ]:generateshape(box):setmaterial(objects\large_weapon)
+model1.selection:pivotpoint(0,0.160,0)
+model1.mesh.child[]:scale(1.1,1.1,1.1):move(0,-0.01,-0.01)
+
+model1.skeleton.bone[expr:wpn_body | wpn_launcher | wpn_launcher_barrel | stock | stock_mod | stock_mod2 | mag_30 | mag_45 | mag_60| ironsight | ironsight_fore |laser |s_eot | s_aimpoint| s_specter |s_pn23 |fore_mod | fore | barrel | barrel_long ]:generateshape(box):setmaterial(objects\large_weapon)
 model1.mesh:calcbounds()
 
 model1.skeleton:saveomf(lr300_unoff\wpn_lr300_unoff_world_animation.omf):resetmotionrefs():addmotionref(dynamics\weapons\wpn_lr300\wpn_lr300_unoff_world_animation)
