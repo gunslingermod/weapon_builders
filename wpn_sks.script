@@ -1,0 +1,725 @@
+const L_FINGER_0 = l_finger0 | l_finger01 | l_finger02
+const L_FINGER_1 = bip01_l_finger1 | bip01_l_finger11 | bip01_l_finger12
+const L_FINGER_2 = bip01_l_finger2 | bip01_l_finger21 | bip01_l_finger22
+const L_FINGER_3 = bip01_l_finger3 | bip01_l_finger31 | bip01_l_finger32
+const L_FINGER_4 = bip01_l_finger4 | bip01_l_finger41 | bip01_l_finger42
+const L_FINGERS_ALL = %L_FINGER_0% | %L_FINGER_1% | %L_FINGER_2% | %L_FINGER_3% | %L_FINGER_4%
+
+const L_HAND_FULL = l_hand | %L_FINGERS_ALL% 
+const L_LIMB_NOHAND = l_clavicle | l_upperarm | l_forearm | l_forearm_twist 
+const L_LIMB_NOFINGERS = %L_LIMB_NOHAND% | l_hand
+const L_LIMB_FULL = %L_LIMB_NOFINGERS% | %L_FINGERS_ALL%
+
+const R_FINGER_0 = r_finger0 | r_finger01 | r_finger02
+const R_FINGER_1 = bip01_r_finger1 | bip01_r_finger11 | bip01_r_finger12
+const R_FINGER_2 = bip01_r_finger2 | bip01_r_finger21 | bip01_r_finger22
+const R_FINGER_3 = bip01_r_finger3 | bip01_r_finger31 | bip01_r_finger32
+const R_FINGER_4 = bip01_r_finger4 | bip01_r_finger41 | bip01_r_finger42
+const R_FINGERS_ALL = %R_FINGER_0% | %R_FINGER_1% | %R_FINGER_2% | %R_FINGER_3% | %R_FINGER_4%
+
+const R_HAND_FULL = r_hand | %R_FINGERS_ALL% 
+const R_LIMB_NOHAND = r_clavicle | r_upperarm | r_forearm | r_forearm_twist 
+const R_LIMB_NOFINGERS = %R_LIMB_NOHAND% | r_hand
+const R_LIMB_FULL = %R_LIMB_NOFINGERS% | %R_FINGERS_ALL%
+
+
+const HUD = model1
+const HANDS = model3
+const TEMP = model2
+const TEMP_HANDS = model4
+const WORLD = model5
+
+//////////////////////////////////////////////////
+
+%WORLD%:loadfromfile(sources\wpn_sks.ogf)
+%WORLD%.skeleton:loadomf(sources\wpn_sks_animation.omf)
+
+set BONE_OFFSET = 0.067, 0.0, 0.3
+
+// Copy eotech scope
+set WORLD_SCOPE_OFFSET = 0.066,-0.195,0.207
+%WORLD%.skeleton:addbone(scope_eotech, wpn_body, %BONE_OFFSET%)
+%TEMP%:loadfromfile(sources\scope1_eotech_from_sig552_world.ogf)
+%TEMP%.mesh.child0:copy()
+%WORLD%.mesh.child0:paste():rebind(scope_eotech):move(%WORLD_SCOPE_OFFSET%)
+%TEMP%:unload()
+
+// Copy aimpoint scope
+set WORLD_SCOPE_OFFSET = 0.066,-0.195,0.20
+%WORLD%.skeleton:addbone(scope_aimpoint, wpn_body, %BONE_OFFSET%)
+%TEMP%:loadfromfile(sources\scope2_aimpoint_from_sig552_world.ogf)
+%TEMP%.mesh.child0:copy()
+%WORLD%.mesh.child0:paste():rebind(scope_aimpoint):move(%WORLD_SCOPE_OFFSET%)
+%TEMP%.mesh.child1:copy()
+%WORLD%.mesh.child0:paste():rebind(scope_aimpoint):move(%WORLD_SCOPE_OFFSET%)
+%TEMP%:unload()
+
+// Copy elcan scope
+set WORLD_SCOPE_OFFSET = 0.066,-0.195,0.233
+%WORLD%.skeleton:addbone(scope_elcan, wpn_body, %BONE_OFFSET%)
+%TEMP%:loadfromfile(sources\scope3_elcan_from_sig552_world.ogf)
+%TEMP%.mesh.child0:copy()
+%WORLD%.mesh.child0:paste():rebind(scope_elcan):move(%WORLD_SCOPE_OFFSET%)
+%TEMP%.mesh.child1:copy()
+%WORLD%.mesh.child0:paste():rebind(scope_elcan):move(%WORLD_SCOPE_OFFSET%)
+%TEMP%:unload()
+
+// Copy PN23 scope
+set WORLD_SCOPE_OFFSET = 0.066,-0.195,0.218
+%WORLD%.skeleton:addbone(scope_pn23, wpn_body, %BONE_OFFSET%)
+%TEMP%:loadfromfile(sources\scope4_pn23_from_sig552_world.ogf)
+%TEMP%.mesh.child0:copy()
+%WORLD%.mesh.child0:paste():rebind(scope_pn23):move(%WORLD_SCOPE_OFFSET%)
+%TEMP%.mesh.child1:copy()
+%WORLD%.mesh.child0:paste():rebind(scope_pn23):move(%WORLD_SCOPE_OFFSET%)
+%TEMP%:unload()
+
+// Copy cobra scope
+set WORLD_SCOPE_OFFSET = 0.064,-0.305,0.245
+%WORLD%.skeleton:addbone(scope_cobra, wpn_body, %BONE_OFFSET%)
+%TEMP%:loadfromfile(sources\cobra_world_from_an94.ogf)
+%TEMP%.mesh.child0:copy()
+%WORLD%.mesh.child0:paste():rebind(scope_cobra):move(%WORLD_SCOPE_OFFSET%)
+%TEMP%.mesh.child1:copy()
+%WORLD%.mesh.child0:paste():rebind(scope_cobra):move(%WORLD_SCOPE_OFFSET%)
+%TEMP%:unload()
+
+// Copy kashtan scope
+set WORLD_SCOPE_OFFSET = 0.064,-0.305,0.245
+%WORLD%.skeleton:addbone(scope_kashtan, wpn_body, %BONE_OFFSET%)
+%TEMP%:loadfromfile(sources\kashtan_world_from_an94.ogf)
+%TEMP%.mesh.child0:copy()
+%WORLD%.mesh.child0:paste():rebind(scope_kashtan):move(%WORLD_SCOPE_OFFSET%)
+%TEMP%.mesh.child1:copy()
+%WORLD%.mesh.child0:paste():rebind(scope_kashtan):move(%WORLD_SCOPE_OFFSET%)
+%TEMP%:unload()
+
+// Copy pka scope
+set WORLD_SCOPE_OFFSET = 0.064,-0.307,0.232
+%WORLD%.skeleton:addbone(scope_pka, wpn_body, %BONE_OFFSET%)
+%TEMP%:loadfromfile(sources\pka_world_from_an94.ogf)
+%TEMP%.mesh.child0:copy()
+%WORLD%.mesh.child0:paste():rebind(scope_pka):move(%WORLD_SCOPE_OFFSET%)
+%TEMP%.mesh.child1:copy()
+%WORLD%.mesh.child0:paste():rebind(scope_pka):move(%WORLD_SCOPE_OFFSET%)
+%TEMP%:unload()
+
+// Copy pso1as scope
+set WORLD_SCOPE_OFFSET = 0.064,-0.307,0.232
+%WORLD%.skeleton:addbone(scope_pso1as, wpn_body, %BONE_OFFSET%)
+%TEMP%:loadfromfile(sources\pso1as_world_from_an94.ogf)
+%TEMP%.mesh.child0:copy()
+%WORLD%.mesh.child0:paste():rebind(scope_pso1as):move(%WORLD_SCOPE_OFFSET%)
+%TEMP%.mesh.child1:copy()
+%WORLD%.mesh.child0:paste():rebind(scope_pso1as):move(%WORLD_SCOPE_OFFSET%)
+%TEMP%:unload()
+
+// Copy nvas scope
+set WORLD_SCOPE_OFFSET = 0.064,-0.307,0.24
+%WORLD%.skeleton:addbone(scope_nvas, wpn_body, %BONE_OFFSET%)
+%TEMP%:loadfromfile(sources\nvas_world_from_an94.ogf)
+%TEMP%.mesh.child0:copy()
+%WORLD%.mesh.child0:paste():rebind(scope_nvas):move(%WORLD_SCOPE_OFFSET%)
+%TEMP%.mesh.child1:copy()
+%WORLD%.mesh.child0:paste():rebind(scope_nvas):move(%WORLD_SCOPE_OFFSET%)
+%TEMP%:unload()
+
+// Copy pso1sn scope
+set WORLD_SCOPE_OFFSET = 0.059,-0.222,0.28
+%WORLD%.skeleton:addbone(scope_pso1sn, wpn_body, %BONE_OFFSET%)
+%TEMP%:loadfromfile(sources\pso1sn_world_from_svu.ogf)
+%TEMP%.mesh.child0:copy()
+%WORLD%.mesh.child0:paste():rebind(scope_pso1sn):move(%WORLD_SCOPE_OFFSET%)
+%TEMP%.mesh.child1:copy()
+%WORLD%.mesh.child0:paste():rebind(scope_pso1sn):move(%WORLD_SCOPE_OFFSET%)
+%TEMP%:unload()
+
+// Copy nvsn scope
+set WORLD_SCOPE_OFFSET = 0.059,-0.222,0.28
+%WORLD%.skeleton:addbone(scope_nvsn, wpn_body, %BONE_OFFSET%)
+%TEMP%:loadfromfile(sources\nvsn_world_from_svu.ogf)
+%TEMP%.mesh.child0:copy()
+%WORLD%.mesh.child0:paste():rebind(scope_nvsn):move(%WORLD_SCOPE_OFFSET%)
+%TEMP%.mesh.child1:copy()
+%WORLD%.mesh.child0:paste():rebind(scope_nvsn):move(%WORLD_SCOPE_OFFSET%)
+%TEMP%:unload()
+
+// Copy rakurs scope
+set WORLD_SCOPE_OFFSET = 0.065, -0.338, 0.27
+%WORLD%.skeleton:addbone(scope_rakurs, wpn_body, %BONE_OFFSET%)
+%TEMP%:loadfromfile(sources\rakurs_world_from_aks74u.ogf)
+%TEMP%.mesh.child0:copy()
+%WORLD%.mesh.child0:paste():rebind(scope_rakurs):move(%WORLD_SCOPE_OFFSET%)
+%TEMP%.mesh.child1:copy()
+%WORLD%.mesh.child0:paste():rebind(scope_rakurs):move(%WORLD_SCOPE_OFFSET%)
+%TEMP%:unload()
+
+set BAYONET_MESH_OFFSET = 0.0, 0, 0
+set BONE_OFFSET = 0.067, -0.083, 0.877
+// Copy bayonet
+%WORLD%.skeleton:addbone(bayonet, wpn_body, %BONE_OFFSET%)
+%TEMP%:loadfromfile(sources\wpn_sks_hud.ogf)
+%TEMP%.mesh.child[]:filterbone(!bayonet)
+%TEMP%.mesh:removecollapsedchildren()
+%TEMP%.mesh.child0:copy()
+%WORLD%.mesh.child0:paste():scale(0.7,0.7,0.7):rebind(bayonet):move(%BAYONET_MESH_OFFSET%)
+%TEMP%:unload()
+unset BAYONET_MESH_OFFSET
+
+//Copy LAM
+set BONE_OFFSET = 0.067, -0.066, 0.695
+set LAM_CORRECTION_OFFSET = -0.041, 0.05, 0.2
+%WORLD%.skeleton:addbone(flash, wpn_body, %BONE_OFFSET%)
+%TEMP%:loadfromfile(sources\wpn_sig550_tactical_hud.ogf)
+%TEMP%.mesh.child[texture:wpn\wpn_anpeq16a]:copy()
+%WORLD%.mesh.child0:paste():rebind(flash):move(%LAM_CORRECTION_OFFSET%)
+
+%WORLD%.selection:pivotpoint(0,-0.116,0.915)
+%WORLD%.selection:reset():pickverts(box, -1, -0.163, 0.908, 1, -0.045, 0.771)
+%WORLD%.mesh.child0:rotateselected(18, x)
+
+%WORLD%.skeleton:addbone(line, flash, %BONE_OFFSET%)
+%TEMP%.mesh.child[texture:pfx\pfx_laser_beam]:copy()
+%WORLD%.mesh.child0:paste():rebind(line):move(%LAM_CORRECTION_OFFSET%)
+
+%WORLD%.skeleton:addbone(light, flash, %BONE_OFFSET%)
+%TEMP%.mesh.child[texture:glow\glow_yellow]:copy()
+%WORLD%.mesh.child0:paste():rebind(light):move(%LAM_CORRECTION_OFFSET%)
+%TEMP%.mesh.child[texture:lights\lights_cone_handing_lamp]:copy()
+%WORLD%.mesh.child0:paste():rebind(light):move(%LAM_CORRECTION_OFFSET%)
+%TEMP%:unload()
+
+%WORLD%.mesh.child0:scale(0.7,0.7,0.7):move(0, 0.035, -0.27)
+%WORLD%.mesh.child1:scale(0.7,0.7,0.7):move(0, 0.035, -0.27)
+%WORLD%.mesh.child2:scale(0.7,0.7,0.7):move(0, 0.035, -0.27)
+%WORLD%.mesh.child3:scale(0.7,0.7,0.7):move(0, 0.035, -0.27)
+
+unset LAM_CORRECTION_OFFSET
+%WORLD%.selection:reset()
+
+%WORLD%.skeleton.bone[expr:flash | bayonet | scope_rakurs | scope_nvsn | scope_pso1sn | scope_nvas | scope_pso1as | scope_pka | scope_kashtan | scope_cobra | scope_pn23 | scope_elcan | scope_aimpoint | scope_eotech]:generateshape(box):setmaterial(objects\large_weapon)
+
+%WORLD%.skeleton:saveomf(sks\wpn_sks_animation.omf):resetmotionrefs():addmotionref(dynamics\weapons\wpn_sks\wpn_sks_animation)
+%WORLD%:savetofile(sks\wpn_sks.ogf)
+
+unset WORLD_SCOPE_OFFSET
+unset BONE_OFFSET
+%WORLD%:unload()
+goto FINISH
+
+//////////////////////////////////////////////////
+%HUD%:loadfromfile(sources\wpn_sks_hud.ogf)
+%HUD%.skeleton:loadomf(sources\wpn_sks_hud_animation.omf)
+%HUD%.mesh.child[texture:eft_wp\ammo_762x39_diff]:settexture(wpn\sks\ammo_762x39_diff)
+
+%HANDS%:loadfromfile(sources\wpn_hand_01.ogf)
+%HANDS%.skeleton:loadomf(sources\sks_hands_anims.omf)
+%HANDS%.skeleton.animation[name:sks_dry]:remove()
+%HANDS%.skeleton.animation[name:sks_sprint_end]:remove()
+%HANDS%.skeleton.animation[name:sks_fab_sprint_end]:remove()
+%HANDS%.skeleton.animation[name:sks_revival]:remove()
+%HANDS%.skeleton.animation[name:sks_fab_revival]:remove()
+%HANDS%.skeleton:mergeomf(sources\sks_hands_additional.omf)
+%HANDS%.skeleton.animation[]:setpower(1)
+
+%HANDS%.skeleton.animation[name:sks_reload_end]:setlength(41):setflags(2):setspeed(1.3)
+%HANDS%.skeleton.animation[name:sks_reload_start]:setlength(65):setflags(2):setspeed(1.3)
+%HANDS%.skeleton.animation[name:sks_reload_empty_start]:setlength(45):setflags(2):setspeed(1.5)
+%HANDS%.skeleton.animation[name:sks_reload_ammo]:setlength(36):setflags(2):setspeed(1.5)
+
+%HUD%.skeleton.animation[name:reload_end]:setlength(41):setflags(2):setspeed(1.3)
+%HUD%.skeleton.animation[name:reload_start]:setlength(65):setflags(2):setspeed(1.3)
+%HUD%.skeleton.animation[name:reload_empty_start]:setlength(45):setflags(2):setspeed(1.5)
+%HUD%.skeleton.animation[name:reload_ammo]:setlength(36):setflags(2):setspeed(1.5)
+
+%HANDS%.skeleton.animation[name:sks_reload]:setspeed(1.3)
+%HANDS%.skeleton.animation[name:sks_reload_empty]:setspeed(1.3)
+%HANDS%.skeleton.animation[name:sks_fab_reload]:setspeed(1.3)
+%HANDS%.skeleton.animation[name:sks_fab_reload_empty]:setspeed(1.3)
+%HUD%.skeleton.animation[name:reload]:setspeed(1.3)
+%HUD%.skeleton.animation[name:reload_empty]:setspeed(1.3)
+
+
+//correct left hand position to prevent collision with exo
+set CORRECTION = 0,-0.001,0.025
+%HANDS%.skeleton.animation[].bone[name:l_clavicle]:move(%CORRECTION%,0,-1)
+
+// Rollback correction for left-handed operations
+set CORRECTION = 0,0.001,-0.025
+%HANDS%.skeleton.animation[name:sks_reload].bone[name:l_clavicle]:move(%CORRECTION%,5,114):interpolate(1,5):interpolate(114,118)
+%HANDS%.skeleton.animation[name:sks_fab_reload].bone[name:l_clavicle]:move(%CORRECTION%,5,114):interpolate(1,5):interpolate(114,118)
+%HANDS%.skeleton.animation[name:sks_reload_empty].bone[name:l_clavicle]:move(%CORRECTION%,5,111):interpolate(1,5):interpolate(111,115)
+%HANDS%.skeleton.animation[name:sks_fab_reload_empty].bone[name:l_clavicle]:move(%CORRECTION%,5,111):interpolate(1,5):interpolate(111,115)
+%HANDS%.skeleton.animation[name:sks_reload_empty].bone[name:l_clavicle]:move(%CORRECTION%,5,111):interpolate(1,5):interpolate(111,115)
+%HANDS%.skeleton.animation[name:sks_fab_reload_empty].bone[name:l_clavicle]:move(%CORRECTION%,5,111):interpolate(1,5):interpolate(111,115)
+unset CORRECTION
+
+//correct left finger for single-ammo reload 
+set FINGER_CORRECTION = 0,5,3
+%HANDS%.skeleton.animation[name:sks_reload_ammo].bone[name:l_finger0]:rotate(%FINGER_CORRECTION%, 0,-1, 0)
+%HANDS%.skeleton.animation[name:sks_reload_end].bone[name:l_finger0]:rotate(%FINGER_CORRECTION%, 0,30, 0):interpolate(30,35)
+%HANDS%.skeleton.animation[name:sks_reload_empty_start].bone[name:l_finger0]:rotate(%FINGER_CORRECTION%, 15,-1, 0):interpolate(10,15)
+%HANDS%.skeleton.animation[name:sks_reload_start].bone[name:l_finger0]:rotate(%FINGER_CORRECTION%, 13,-1, 0):interpolate(5,13)
+unset FINGER_CORRECTION
+
+//copy dtk
+%TEMP%:loadfromfile(sources\sks_dtk.ogf)
+%TEMP%.mesh.child0:copy()
+%HUD%.mesh.child0:paste():rebind(dtk)
+%TEMP%:unload()
+
+//copy sights
+%HUD%.skeleton:addbone(sights, wpn_body,  0.093,-0.03,1.316)
+%TEMP%:loadfromfile(sources\wpn_ak74_hud.ogf)
+%TEMP%.mesh.child[shader:models\selflightl]:copy()
+%HUD%.mesh.child0:paste():rebind(sights)
+%TEMP%:unload()
+
+%HUD%.selection:reset():pickverts(box, -1, -0.013, 1.107, 1, -0.036, 1.131)
+%HUD%.mesh.child0:moveselected(-0.000333,-0.01353,0.19997)
+%HUD%.selection:reset():pickverts(box, -1, -0.019, 0.577, 1, -0.032, 0.595)
+%HUD%.mesh.child0:moveselected(-0.000285,-0.01255,0.0438)
+%HUD%.selection:pivotpoint(0,-0.035,0.629)
+%HUD%.mesh.child0:rotateselected(-15,x)
+
+%HUD%.selection:reset()
+
+//Copy LAM
+set LAM_CORRECTION_OFFSET = -0.041, 0.05, 0.2
+set LAM_BONES_PARAMS = 0.093,-0.092,0.987, 0,0,0, 1
+%HUD%.skeleton:addbone(flash, wpn_body, %LAM_BONES_PARAMS%)
+%TEMP%:loadfromfile(sources\wpn_sig550_tactical_hud.ogf)
+%TEMP%.mesh.child[texture:wpn\wpn_anpeq16a]:copy()
+%HUD%.mesh.child1:paste():rebind(flash):move(%LAM_CORRECTION_OFFSET%)
+
+%HUD%.selection:pivotpoint(0,-0.116,0.915)
+%HUD%.selection:reset():pickverts(box, -1, -0.163, 0.908, 1, -0.045, 0.771)
+%HUD%.mesh.child1:rotateselected(18, x)
+
+%HUD%.skeleton:addbone(line, flash, %LAM_BONES_PARAMS%)
+%TEMP%.mesh.child[texture:pfx\pfx_laser_beam]:copy()
+%HUD%.mesh.child1:paste():rebind(line):move(%LAM_CORRECTION_OFFSET%)
+
+%HUD%.skeleton:addbone(light, flash, %LAM_BONES_PARAMS%)
+%TEMP%.mesh.child[texture:glow\glow_yellow]:copy()
+%HUD%.mesh.child1:paste():rebind(light):move(%LAM_CORRECTION_OFFSET%)
+%TEMP%.mesh.child[texture:lights\lights_cone_handing_lamp]:copy()
+%HUD%.mesh.child1:paste():rebind(light):move(%LAM_CORRECTION_OFFSET%)
+%TEMP%:unload()
+
+unset LAM_CORRECTION_OFFSET
+unset LAM_BONES_PARAMS
+%HUD%.selection:reset()
+
+// LAM animation
+%TEMP_HANDS%:loadfromfile(sources\wpn_hand_01.ogf)
+%TEMP_HANDS%.skeleton:loadomf(sources\wpn_hand_vintorez_hud_animation.omf)
+%HANDS%.skeleton.animation[name:sks_fab_idle]:duplicate(sks_fab_lam)
+%HANDS%.skeleton.animation[name:sks_fab_lam]:setlength(36):setflags(2)
+%TEMP_HANDS%.skeleton.animation[name:vss_lam]:copytrack(0,-1, lead_gun | %L_FINGER_0%)
+%HANDS%.skeleton.animation[name:sks_fab_lam]:pastetrack(0,0)
+%TEMP_HANDS%:unload()
+
+%HANDS%.skeleton.animation[name:sks_fab_idle]:copykey(0)
+%HANDS%.skeleton.animation[name:sks_fab_lam]:pastekey(0)
+%HANDS%.skeleton.animation[name:sks_fab_lam].bone[expr:lead_gun | l_finger0]:applydiff(0, -1, 1, -1)
+
+%HANDS%.skeleton.iksolver:simplelimb(l_hand, x, xz)
+%HANDS%.skeleton.animation[name:sks_fab_lam]:setikrefpose(0)
+%HANDS%.skeleton.animation[name:sks_fab_lam].bone[name:l_hand]:followbone(lead_gun, 0, 1, -1)
+
+%HANDS%.skeleton.animation[name:sks_fab_lam].bone[name:l_hand]:move(0.001,-0.013,0.008, 12,14, 0,0):rotate(-2,0,0, 12,14, 1)
+%HANDS%.skeleton.animation[name:sks_fab_lam]:setikrefpose(8)
+%HANDS%.skeleton.animation[name:sks_fab_lam].bone[name:l_hand]:interpolate(8,12,1,1,1.2):interpolate(14,20,1,1,0.8)
+%HANDS%.skeleton.iksolver:reset()
+
+%HANDS%.skeleton.iksolver:simplelimb(r_hand, x, xz)
+%HANDS%.skeleton.animation[name:sks_fab_lam].bone[name:r_hand]:followbone(lead_gun, 0, 1, -1)
+%HANDS%.skeleton.iksolver:reset()
+
+%HANDS%.skeleton.animation[name:sks_fab_idle]:copykey(0, %L_FINGER_0%)
+%HANDS%.skeleton.animation[name:sks_fab_lam]:pastekey(20,-1)
+%HANDS%.skeleton.animation[name:sks_fab_lam].bone[expr:%L_FINGER_0%]:interpolate(14,20,1,1,0.8)
+
+// Prepare animation for scopes
+
+%HUD%.skeleton.animation[name:idle]:duplicate(idle_aim)
+%HUD%.skeleton.animation[name:idle_empty]:duplicate(idle_aim_empty)
+%HUD%.skeleton.animation[name:idle_jammed]:duplicate(idle_aim_jammed)
+%HUD%.skeleton.animation[name:idle_aim*]:setlength(1)
+
+%HUD%.skeleton.animation[name:idle]:duplicate(idle_start_aim)
+%HUD%.skeleton.animation[name:idle_empty]:duplicate(idle_start_aim_empty)
+%HUD%.skeleton.animation[name:idle_jammed]:duplicate(idle_start_aim_jammed)
+%HUD%.skeleton.animation[name:idle_start_aim*]:setlength(15):setflags(2)
+
+%HUD%.skeleton.animation[name:idle]:duplicate(idle_end_aim)
+%HUD%.skeleton.animation[name:idle_empty]:duplicate(idle_end_aim_empty)
+%HUD%.skeleton.animation[name:idle_jammed]:duplicate(idle_end_aim_jammed)
+%HUD%.skeleton.animation[name:idle_end_aim*]:setlength(15):setflags(2)
+
+%HUD%.skeleton.animation[name:shoot]:duplicate(shoot_aim)
+%HUD%.skeleton.animation[name:shoot_jammed]:duplicate(shoot_aim_jammed)
+%HUD%.skeleton.animation[name:shoot_last]:duplicate(shoot_aim_last)
+
+%HUD%.selection:pivotpoint(0.071,-0.074,0.448)
+%HUD%.mesh.child[texture:wpn\sks\wpn_dovetail]:scale(0.95, 0.9, 0.9):move(0.002,0,0)
+%HUD%.selection:reset()
+
+// Replace buggy aim_scope anims with regular _aim
+%HANDS%.skeleton.animation[name:sks_aim_shoot_scope*]:remove()
+%HANDS%.skeleton.animation[name:sks_aim_shoot*]:duplicate(sks_aim_shoot_scope*)
+
+%HANDS%.skeleton.animation[name:sks_fab_aim_shoot_scope*]:remove()
+%HANDS%.skeleton.animation[name:sks_fab_aim_shoot*]:duplicate(sks_fab_aim_shoot_scope*)
+
+%HANDS%.skeleton.animation[name:sks_aim_walk_scope]:remove()
+%HANDS%.skeleton.animation[name:sks_aim_walk]:duplicate(sks_aim_walk_scope)
+
+%HANDS%.skeleton.animation[name:sks_fab_aim_walk_scope]:remove()
+%HANDS%.skeleton.animation[name:sks_fab_aim_walk]:duplicate(sks_fab_aim_walk_scope)
+
+//goto LABEL_FINAL
+//remove
+//%HUD%.mesh.child[texture:wpn\sks\wpn_sks_wood_stock]:remove()
+//%HUD%.mesh.child[texture:wpn\sks\addons\wpn_sks_defense_rear_stock]:remove()
+//goto LABEL_SCOPE
+
+// Copy rakurs scope
+%TEMP%:loadfromfile(sources\scope_rakurs_from_toz34.ogf)
+set BONE_OFFSET = 0.093,-0.002, 0.829
+%HUD%.skeleton:addbone(scope_rakurs, wpn_body, %BONE_OFFSET%)
+%HUD%.skeleton:addbone(scope_rakurs_lense, scope_rakurs, %BONE_OFFSET%)
+unset BONE_OFFSET
+
+set SCOPE_OFFSET = 0,-0.003,0.35
+%TEMP%.mesh.child0:copy()
+%HUD%.mesh.child0:paste():rebind(scope_rakurs):move(%SCOPE_OFFSET%)
+%TEMP%.mesh.child1:copy()
+%HUD%.mesh.child0:paste():rebind(scope_rakurs_lense):move(%SCOPE_OFFSET%)
+%TEMP%.mesh.child2:copy()
+%HUD%.mesh.child0:paste():rebind(scope_rakurs):move(%SCOPE_OFFSET%)
+%TEMP%.mesh.child3:copy()
+%HUD%.mesh.child0:paste():rebind(scope_rakurs):move(%SCOPE_OFFSET%)
+%TEMP%.mesh.child4:copy()
+%HUD%.mesh.child0:paste():rebind(scope_rakurs):move(%SCOPE_OFFSET%)
+%TEMP%:unload()
+unset SCOPE_OFFSET
+
+
+// Copy eotech scope
+set BONE_OFFSET = 0.093,0.008, 0.435
+%HUD%.skeleton:addbone(scope_eotech, wpn_body, %BONE_OFFSET%)
+%HUD%.skeleton:addbone(scope_eotech_sight, scope_eotech, %BONE_OFFSET%)
+unset BONE_OFFSET
+
+set SCOPE_OFFSET = -0.035,0.066,-0.099
+%TEMP%:loadfromfile(sources\scope1_eotech_from_sig552.ogf)
+%TEMP%.mesh.child0:copy()
+%HUD%.mesh.child0:paste()
+%HUD%.mesh.child0:rebind(scope_eotech):move(%SCOPE_OFFSET%)
+%TEMP%.mesh.child1:copy()
+%HUD%.mesh.child1:paste()
+%HUD%.mesh.child1:rebind(scope_eotech):move(%SCOPE_OFFSET%)
+%TEMP%.mesh.child2:copy()
+%HUD%.mesh.child2:paste()
+%HUD%.mesh.child2:rebind(scope_eotech_sight):move(%SCOPE_OFFSET%)
+%TEMP%:unload()
+unset SCOPE_OFFSET
+
+// Copy aimpoint scope
+set BONE_OFFSET = 0.093,0.008, 0.435
+%HUD%.skeleton:addbone(scope_aimpoint, wpn_body, %BONE_OFFSET%)
+%HUD%.skeleton:addbone(scope_aimpoint_sight, scope_aimpoint, %BONE_OFFSET%)
+%HUD%.skeleton:addbone(scope_aimpoint_lense, scope_aimpoint, %BONE_OFFSET%)
+unset BONE_OFFSET
+
+set SCOPE_OFFSET = -0.035,0.0665,-0.109
+%TEMP%:loadfromfile(sources\scope2_aimpoint_from_sig552.ogf)
+%TEMP%.mesh.child0:copy()
+%HUD%.mesh.child0:paste()
+%HUD%.mesh.child0:rebind(scope_aimpoint):move(%SCOPE_OFFSET%)
+%TEMP%.mesh.child1:copy()
+%HUD%.mesh.child1:paste()
+%HUD%.mesh.child1:rebind(scope_aimpoint_lense):move(%SCOPE_OFFSET%)
+%TEMP%.mesh.child2:copy()
+%HUD%.mesh.child2:paste()
+%HUD%.mesh.child2:rebind(scope_aimpoint):move(%SCOPE_OFFSET%)
+%TEMP%.mesh.child3:copy()
+%HUD%.mesh.child3:paste()
+%HUD%.mesh.child3:rebind(scope_aimpoint):move(%SCOPE_OFFSET%)
+%TEMP%.mesh.child4:copy()
+%HUD%.mesh.child4:paste()
+%HUD%.mesh.child4:rebind(scope_aimpoint_sight):move(%SCOPE_OFFSET%)
+unset SCOPE_OFFSET
+%TEMP%:unload()
+
+// copy elcan specter scope
+set BONE_OFFSET = 0.093,0.008, 0.435
+%HUD%.skeleton:addbone(scope_elcan, wpn_body, %BONE_OFFSET%)
+unset BONE_OFFSET
+
+set SCOPE_OFFSET = -0.035,0.0665,-0.075
+%TEMP%:loadfromfile(sources\scope3_elcan_from_sig552.ogf)
+%TEMP%.mesh.child0:copy()
+%HUD%.mesh.child0:paste()
+%HUD%.mesh.child0:rebind(scope_elcan):move(%SCOPE_OFFSET%)
+%TEMP%.mesh.child1:copy()
+%HUD%.mesh.child1:paste()
+%HUD%.mesh.child1:rebind(scope_elcan):move(%SCOPE_OFFSET%)
+%TEMP%.mesh.child2:copy()
+%HUD%.mesh.child2:paste()
+%HUD%.mesh.child2:rebind(scope_elcan):move(%SCOPE_OFFSET%):move(0,0,-0.0001)
+%TEMP%:unload()
+unset SCOPE_OFFSET
+
+// copy pn23 scope
+set BONE_OFFSET = 0.093,0.008, 0.435
+%HUD%.skeleton:addbone(scope_pn23, wpn_body, %BONE_OFFSET%)
+unset BONE_OFFSET
+
+%HUD%.selection:pivotpoint(0.093,-0.022,0.413)
+set SCOPE_OFFSET = -0.035,0.0665,-0.09
+set SCALING_FACTOR = 0.95,0.95,0.95
+%TEMP%:loadfromfile(sources\scope4_pn23_from_sig552.ogf)
+%TEMP%.mesh.child0:copy()
+%HUD%.mesh.child0:paste()
+%HUD%.mesh.child0:rebind(scope_pn23):move(%SCOPE_OFFSET%):scale(%SCALING_FACTOR%)
+%TEMP%.mesh.child1:copy()
+%HUD%.mesh.child1:paste()
+%HUD%.mesh.child1:rebind(scope_pn23):move(%SCOPE_OFFSET%):scale(%SCALING_FACTOR%)
+%TEMP%.mesh.child2:copy()
+%HUD%.mesh.child2:paste()
+%HUD%.mesh.child2:rebind(scope_pn23):move(%SCOPE_OFFSET%):scale(%SCALING_FACTOR%)
+%TEMP%.mesh.child3:copy()
+%HUD%.mesh.child3:paste()
+%HUD%.mesh.child3:rebind(scope_pn23):move(%SCOPE_OFFSET%):scale(%SCALING_FACTOR%)
+%TEMP%:unload()
+%HUD%.selection:reset()
+unset SCOPE_OFFSET
+unset SCALING_FACTOR
+
+
+// copy nvas scope
+set BONE_OFFSET = 0.093,0.008, 0.435
+%HUD%.skeleton:addbone(scope_nvas, wpn_body, %BONE_OFFSET%)
+unset BONE_OFFSET
+
+%HUD%.selection:pivotpoint(0.055,-0.124,0.440)
+set SCALING_FACTOR = 0.9,0.9,0.9
+set SCOPE_OFFSET = 0.0017,-0.020,0.015
+set SCOPE_AFTERSCALE_OFFSET = -0.002,0,0
+%TEMP%:loadfromfile(sources\scope_nvas_hud_from_an94.ogf)
+%TEMP%.mesh.child0:copy()
+%HUD%.mesh.child0:paste()
+%HUD%.mesh.child0:rebind(scope_nvas):move(%SCOPE_OFFSET%):scale(%SCALING_FACTOR%):move(%SCOPE_AFTERSCALE_OFFSET%)
+%TEMP%.mesh.child1:copy()
+%HUD%.mesh.child1:paste()
+%HUD%.mesh.child1:rebind(scope_nvas):move(%SCOPE_OFFSET%):scale(%SCALING_FACTOR%):move(%SCOPE_AFTERSCALE_OFFSET%)
+%TEMP%.mesh.child2:copy()
+%HUD%.mesh.child2:paste()
+%HUD%.mesh.child2:rebind(scope_nvas):move(%SCOPE_OFFSET%):scale(%SCALING_FACTOR%):move(%SCOPE_AFTERSCALE_OFFSET%)
+%TEMP%.mesh.child3:copy()
+%HUD%.mesh.child3:paste()
+%HUD%.mesh.child3:rebind(scope_nvas):move(%SCOPE_OFFSET%):scale(%SCALING_FACTOR%):move(%SCOPE_AFTERSCALE_OFFSET%)
+%TEMP%:unload()
+%HUD%.selection:reset()
+unset SCOPE_OFFSET
+unset SCALING_FACTOR
+unset SCOPE_AFTERSCALE_OFFSET
+
+
+// copy pso1as scope
+set BONE_OFFSET = 0.093,0.008, 0.435
+%HUD%.skeleton:addbone(scope_pso1as, wpn_body, %BONE_OFFSET%)
+unset BONE_OFFSET
+
+%HUD%.selection:pivotpoint(0.055,-0.124,0.440)
+set SCALING_FACTOR = 0.9,0.9,0.9
+set SCOPE_OFFSET = 0.0015,-0.02,0
+set SCOPE_AFTERSCALE_OFFSET = -0.002,0,0
+%TEMP%:loadfromfile(sources\scope_pso1as_hud_from_an94.ogf)
+%TEMP%.mesh.child0:copy()
+%HUD%.mesh.child0:paste()
+%HUD%.mesh.child0:rebind(scope_pso1as):move(%SCOPE_OFFSET%):scale(%SCALING_FACTOR%):move(%SCOPE_AFTERSCALE_OFFSET%)
+%TEMP%.mesh.child1:copy()
+%HUD%.mesh.child1:paste()
+%HUD%.mesh.child1:rebind(scope_pso1as):move(%SCOPE_OFFSET%):scale(%SCALING_FACTOR%):move(%SCOPE_AFTERSCALE_OFFSET%)
+%TEMP%.mesh.child2:copy()
+%HUD%.mesh.child2:paste()
+%HUD%.mesh.child2:rebind(scope_pso1as):move(%SCOPE_OFFSET%):scale(%SCALING_FACTOR%):move(%SCOPE_AFTERSCALE_OFFSET%)
+%TEMP%:unload()
+unset SCOPE_OFFSET
+unset SCALING_FACTOR
+unset SCOPE_AFTERSCALE_OFFSET
+
+
+// copy cobra scope
+set BONE_OFFSET = 0.093,0.008, 0.435
+%HUD%.skeleton:addbone(scope_cobra, wpn_body, %BONE_OFFSET%)
+%HUD%.skeleton:addbone(scope_cobra_sight, scope_cobra, %BONE_OFFSET%)
+unset BONE_OFFSET
+
+%HUD%.selection:pivotpoint(0.055,-0.124,0.440)
+set SCALING_FACTOR =0.95,0.95,0.95
+set SCOPE_OFFSET = 0.004,-0.015,0.03
+set SCOPE_AFTERSCALE_OFFSET = -0.002,0,0
+%TEMP%:loadfromfile(sources\scope_cobra_hud_from_an94.ogf)
+%TEMP%.mesh.child0:copy()
+%HUD%.mesh.child0:paste()
+%HUD%.mesh.child0:rebind(scope_cobra_sight):move(%SCOPE_OFFSET%):scale(%SCALING_FACTOR%):move(%SCOPE_AFTERSCALE_OFFSET%)
+%TEMP%.mesh.child1:copy()
+%HUD%.mesh.child1:paste()
+%HUD%.mesh.child1:rebind(scope_cobra):move(%SCOPE_OFFSET%):scale(%SCALING_FACTOR%):move(%SCOPE_AFTERSCALE_OFFSET%)
+%TEMP%.mesh.child2:copy()
+%HUD%.mesh.child2:paste()
+%HUD%.mesh.child2:rebind(scope_cobra):move(%SCOPE_OFFSET%):scale(%SCALING_FACTOR%):move(%SCOPE_AFTERSCALE_OFFSET%)
+%TEMP%:unload()
+unset SCOPE_OFFSET
+unset SCALING_FACTOR
+unset SCOPE_AFTERSCALE_OFFSET
+
+// copy pka scope
+set BONE_OFFSET = 0.093,0.008, 0.435
+%HUD%.skeleton:addbone(scope_pka, wpn_body, %BONE_OFFSET%)
+%HUD%.skeleton:addbone(scope_pka_sight, scope_pka, %BONE_OFFSET%)
+%HUD%.skeleton:addbone(scope_pka_lense, scope_pka, %BONE_OFFSET%)
+unset BONE_OFFSET
+
+%HUD%.selection:pivotpoint(0.055,-0.124,0.440)
+set SCALING_FACTOR =0.95,0.95,0.95
+set SCOPE_OFFSET = 0.0022,-0.0205,0.005
+set SCOPE_AFTERSCALE_OFFSET = -0.002,0,0
+%TEMP%:loadfromfile(sources\scope_pka_from_an94.ogf)
+%TEMP%.mesh.child0:copy()
+%HUD%.mesh.child0:paste()
+%HUD%.mesh.child0:rebind(scope_pka_sight):move(%SCOPE_OFFSET%):scale(%SCALING_FACTOR%):move(%SCOPE_AFTERSCALE_OFFSET%)
+%TEMP%.mesh.child1:copy()
+%HUD%.mesh.child1:paste()
+%HUD%.mesh.child1:rebind(scope_pka_lense):move(%SCOPE_OFFSET%):scale(%SCALING_FACTOR%):move(%SCOPE_AFTERSCALE_OFFSET%)
+%TEMP%.mesh.child2:copy()
+%HUD%.mesh.child2:paste()
+%HUD%.mesh.child2:rebind(scope_pka):move(%SCOPE_OFFSET%):scale(%SCALING_FACTOR%):move(%SCOPE_AFTERSCALE_OFFSET%)
+%TEMP%.mesh.child3:copy()
+%HUD%.mesh.child3:paste()
+%HUD%.mesh.child3:rebind(scope_pka):move(%SCOPE_OFFSET%):scale(%SCALING_FACTOR%):move(%SCOPE_AFTERSCALE_OFFSET%)
+%TEMP%.mesh.child4:copy()
+%HUD%.mesh.child4:paste()
+%HUD%.mesh.child4:rebind(scope_pka):move(%SCOPE_OFFSET%):scale(%SCALING_FACTOR%):move(%SCOPE_AFTERSCALE_OFFSET%)
+%TEMP%.mesh.child5:copy()
+%HUD%.mesh.child5:paste()
+%HUD%.mesh.child5:rebind(scope_pka):move(%SCOPE_OFFSET%):scale(%SCALING_FACTOR%):move(%SCOPE_AFTERSCALE_OFFSET%)
+%TEMP%:unload()
+unset SCOPE_OFFSET
+unset SCALING_FACTOR
+unset SCOPE_AFTERSCALE_OFFSET
+
+// copy pso1sn scope
+set BONE_OFFSET = 0.093,0.008, 0.435
+%HUD%.skeleton:addbone(scope_pso1sn, wpn_body, %BONE_OFFSET%)
+unset BONE_OFFSET
+
+%HUD%.selection:pivotpoint(0.055,-0.124,0.440)
+set SCALING_FACTOR = 0.9,0.9,0.85
+set SCOPE_OFFSET = -0.0545,0.016,-0.32
+set SCOPE_AFTERSCALE_OFFSET = -0.002,0,0
+%TEMP%:loadfromfile(sources\scope_pso1sn_hud_from_svu.ogf)
+%TEMP%.mesh.child0:copy()
+%HUD%.mesh.child0:paste()
+%HUD%.mesh.child0:rebind(scope_pso1sn):move(%SCOPE_OFFSET%):scale(%SCALING_FACTOR%):move(%SCOPE_AFTERSCALE_OFFSET%)
+%TEMP%.mesh.child1:copy()
+%HUD%.mesh.child1:paste()
+%HUD%.mesh.child1:rebind(scope_pso1sn):move(%SCOPE_OFFSET%):scale(%SCALING_FACTOR%):move(%SCOPE_AFTERSCALE_OFFSET%)
+%TEMP%.mesh.child2:copy()
+%HUD%.mesh.child2:paste()
+%HUD%.mesh.child2:rebind(scope_pso1sn):move(%SCOPE_OFFSET%):scale(%SCALING_FACTOR%):move(%SCOPE_AFTERSCALE_OFFSET%)
+%TEMP%:unload()
+unset SCOPE_OFFSET
+unset SCALING_FACTOR
+unset SCOPE_AFTERSCALE_OFFSET
+
+// copy kashtan scope
+set BONE_OFFSET = 0.093,0.008, 0.435
+%HUD%.skeleton:addbone(scope_kashtan, wpn_body, %BONE_OFFSET%)
+unset BONE_OFFSET
+
+%HUD%.selection:pivotpoint(0.055,-0.124,0.440)
+set SCALING_FACTOR = 0.9,0.9,0.9
+set SCOPE_OFFSET = 0.0025,-0.02,0.005
+set SCOPE_AFTERSCALE_OFFSET = -0.002,0,0
+%TEMP%:loadfromfile(sources\scope_kashtan_from_an94.ogf)
+%TEMP%.mesh.child0:copy()
+%HUD%.mesh.child0:paste()
+%HUD%.mesh.child0:rebind(scope_kashtan):move(%SCOPE_OFFSET%):scale(%SCALING_FACTOR%):move(%SCOPE_AFTERSCALE_OFFSET%)
+%TEMP%.mesh.child1:copy()
+%HUD%.mesh.child1:paste()
+%HUD%.mesh.child1:rebind(scope_kashtan):move(%SCOPE_OFFSET%):scale(%SCALING_FACTOR%):move(%SCOPE_AFTERSCALE_OFFSET%)
+%TEMP%.mesh.child2:copy()
+%HUD%.mesh.child2:paste()
+%HUD%.mesh.child2:rebind(scope_kashtan):move(%SCOPE_OFFSET%):scale(%SCALING_FACTOR%):move(%SCOPE_AFTERSCALE_OFFSET%)
+%TEMP%:unload()
+unset SCOPE_OFFSET
+unset SCALING_FACTOR
+unset SCOPE_AFTERSCALE_OFFSET
+
+// copy nvsn scope
+set BONE_OFFSET = 0.093,0.008, 0.435
+%HUD%.skeleton:addbone(scope_nvsn, wpn_body, %BONE_OFFSET%)
+unset BONE_OFFSET
+
+%HUD%.selection:pivotpoint(0.055,-0.124,0.440)
+set SCALING_FACTOR = 0.9,0.9,0.9
+set SCOPE_OFFSET = -0.0545,0.016,-0.32
+set SCOPE_AFTERSCALE_OFFSET = -0.002,0,0
+%TEMP%:loadfromfile(sources\scope_nvsn_hud_from_svu.ogf)
+%TEMP%.mesh.child0:copy()
+%HUD%.mesh.child0:paste()
+%HUD%.mesh.child0:rebind(scope_nvsn):move(%SCOPE_OFFSET%):scale(%SCALING_FACTOR%):move(%SCOPE_AFTERSCALE_OFFSET%)
+%TEMP%.mesh.child1:copy()
+%HUD%.mesh.child1:paste()
+%HUD%.mesh.child1:rebind(scope_nvsn):move(%SCOPE_OFFSET%):scale(%SCALING_FACTOR%):move(%SCOPE_AFTERSCALE_OFFSET%)
+%TEMP%.mesh.child2:copy()
+%HUD%.mesh.child2:paste()
+%HUD%.mesh.child2:rebind(scope_nvsn):move(%SCOPE_OFFSET%):scale(%SCALING_FACTOR%):move(%SCOPE_AFTERSCALE_OFFSET%)
+%HUD%.mesh.child3:paste()
+%HUD%.mesh.child3:rebind(scope_nvsn):move(%SCOPE_OFFSET%):scale(%SCALING_FACTOR%):move(%SCOPE_AFTERSCALE_OFFSET%)
+%TEMP%:unload()
+unset SCOPE_OFFSET
+unset SCALING_FACTOR
+unset SCOPE_AFTERSCALE_OFFSET
+
+// Create sights animation
+set MARK_OFFSET = 0,-10,0
+set MARK_OFFSET_REV = 0,10,0
+set SHOW_SIGHTS_FRAME = 5
+set HIDE_SIGHTS_FRAME = 5
+
+// sights that go to DOWN in aim
+set BONES_DOWN = scope_rakurs_lense | scope_aimpoint_lense | scope_pka_lense
+%HUD%.skeleton.animation[name:idle_aim*].bone[expr:%BONES_DOWN%]:move(%MARK_OFFSET%,0,-1)
+%HUD%.skeleton.animation[name:shoot_aim*].bone[expr:%BONES_DOWN%]:move(%MARK_OFFSET%,0,-1)
+%HUD%.skeleton.animation[name:idle_start_aim*].bone[expr:%BONES_DOWN%]:move(%MARK_OFFSET%,%SHOW_SIGHTS_FRAME%,-1)
+%HUD%.skeleton.animation[name:idle_end_aim*].bone[expr:%BONES_DOWN%]:move(%MARK_OFFSET%,0,%HIDE_SIGHTS_FRAME%)
+unset BONES_DOWN
+
+// sights that go to NORMAL in aim
+set BONES_NORMAL = scope_eotech_sight | scope_aimpoint_sight | scope_cobra_sight | scope_pka_sight
+%HUD%.skeleton.animation[].bone[expr:%BONES_NORMAL%]:move(%MARK_OFFSET%, 0, -1)
+%HUD%.skeleton.animation[name:idle_aim*].bone[expr:%BONES_NORMAL%]:move(%MARK_OFFSET_REV%,0,-1)
+%HUD%.skeleton.animation[name:shoot_aim*].bone[expr:%BONES_NORMAL%]:move(%MARK_OFFSET_REV%,0,-1)
+%HUD%.skeleton.animation[name:idle_start_aim*].bone[expr:%BONES_NORMAL%]:move(%MARK_OFFSET_REV%,%SHOW_SIGHTS_FRAME%,-1)
+%HUD%.skeleton.animation[name:idle_end_aim*].bone[expr:%BONES_NORMAL%]:move(%MARK_OFFSET_REV%,0,%HIDE_SIGHTS_FRAME%)
+unset BONES_NORMAL
+
+unset MARK_OFFSET
+unset MARK_OFFSET_REV
+unset SHOW_SIGHTS_FRAME
+unset HIDE_SIGHTS_FRAME
+
+:LABEL_FINAL
+
+%HUD%.skeleton:saveomf(sks\wpn_sks_hud_animation.omf):resetmotionrefs():addmotionref(dynamics\weapons\wpn_sks\wpn_sks_hud_animation)
+%HUD%:savetofile(sks\wpn_sks_hud.ogf)
+%HANDS%.skeleton:saveomf(sks\wpn_hand_sks_hud_animation.omf)
+
+:FINISH
