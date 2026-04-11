@@ -166,36 +166,49 @@ set BONE_OFFSET = 0.067, -0.083, 0.877
 %TEMP%:unload()
 unset BAYONET_MESH_OFFSET
 
-//Copy LAM
-set BONE_OFFSET = 0.067, -0.066, 0.695
-set LAM_CORRECTION_OFFSET = -0.041, 0.05, 0.2
-%WORLD%.skeleton:addbone(flash, wpn_body, %BONE_OFFSET%)
-%TEMP%:loadfromfile(sources\wpn_sig550_tactical_hud.ogf)
-%TEMP%.mesh.child[texture:wpn\wpn_anpeq16a]:copy()
-%WORLD%.mesh.child0:paste():rebind(flash):move(%LAM_CORRECTION_OFFSET%)
+set LAM_BONES_PARAMS = 0.067, -0.066, 0.695
+%WORLD%.skeleton:addbone(flash, wpn_body, %LAM_BONES_PARAMS%)
+%WORLD%.skeleton:addbone(light, flash, %LAM_BONES_PARAMS%)
+%WORLD%.skeleton:addbone(line, flash, %LAM_BONES_PARAMS%)
+unset LAM_BONES_PARAMS
 
-%WORLD%.selection:pivotpoint(0,-0.116,0.915)
-%WORLD%.selection:reset():pickverts(box, -1, -0.163, 0.908, 1, -0.045, 0.771)
-%WORLD%.mesh.child0:rotateselected(18, x)
-
-%WORLD%.skeleton:addbone(line, flash, %BONE_OFFSET%)
-%TEMP%.mesh.child[texture:pfx\pfx_laser_beam]:copy()
-%WORLD%.mesh.child0:paste():rebind(line):move(%LAM_CORRECTION_OFFSET%)
-
-%WORLD%.skeleton:addbone(light, flash, %BONE_OFFSET%)
-%TEMP%.mesh.child[texture:glow\glow_yellow]:copy()
-%WORLD%.mesh.child0:paste():rebind(light):move(%LAM_CORRECTION_OFFSET%)
-%TEMP%.mesh.child[texture:lights\lights_cone_handing_lamp]:copy()
-%WORLD%.mesh.child0:paste():rebind(light):move(%LAM_CORRECTION_OFFSET%)
+%TEMP%:loadfromfile(sources\sks_lam.ogf)
+%TEMP%.mesh.child0:copy()
+%WORLD%.mesh.child0:paste():rebind(light)
+%TEMP%.mesh.child1:copy()
+%WORLD%.mesh.child0:paste():rebind(light)
+%TEMP%.mesh.child2:copy()
+%WORLD%.mesh.child0:paste():rebind(line)
+%TEMP%.mesh.child3:copy()
+%WORLD%.mesh.child0:paste():rebind(flash)
+%TEMP%.mesh.child4:copy()
+%WORLD%.mesh.child0:paste():rebind(flash)
 %TEMP%:unload()
 
-%WORLD%.mesh.child0:scale(0.7,0.7,0.7):move(0, 0.035, -0.27)
-%WORLD%.mesh.child1:scale(0.7,0.7,0.7):move(0, 0.035, -0.27)
-%WORLD%.mesh.child2:scale(0.7,0.7,0.7):move(0, 0.035, -0.27)
-%WORLD%.mesh.child3:scale(0.7,0.7,0.7):move(0, 0.035, -0.27)
+%WORLD%.selection:pivotpoint(0,0,0)
+%WORLD%.mesh.child0:scale(0.7,0.7,0.7)
+%WORLD%.mesh.child1:scale(0.7,0.7,0.7)
+%WORLD%.mesh.child2:scale(0.7,0.7,0.7)
+%WORLD%.mesh.child3:scale(0.7,0.7,0.7)
+%WORLD%.mesh.child4:scale(0.7,0.7,0.7) 
 
-unset LAM_CORRECTION_OFFSET
-%WORLD%.selection:reset()
+
+//copy sights
+%WORLD%.skeleton:addbone(sights, wpn_body,  0.067, -0.066, 0.695)
+%TEMP%:loadfromfile(sources\wpn_ak74_hud.ogf)
+%TEMP%.mesh.child[shader:models\selflightl]:copy()
+%WORLD%.mesh.child0:paste():rebind(sights)
+%TEMP%:unload()
+
+%WORLD%.selection:reset():pickverts(box, -1, -0.013, 1.107, 1, -0.036, 1.131)
+%WORLD%.mesh.child0:moveselected(-0.000333,-0.01353,0.19997)
+%WORLD%.selection:reset():pickverts(box, -1, -0.019, 0.577, 1, -0.032, 0.595)
+%WORLD%.mesh.child0:moveselected(-0.000285,-0.01255,0.0438)
+%WORLD%.selection:pivotpoint(0,-0.035,0.629)
+%WORLD%.mesh.child0:rotateselected(-15,x)
+%WORLD%.mesh.child0:scale(0.7,0.7,0.7):move(-0.00005, 0.01049, -0.18891)
+
+%HUD%.selection:reset()
 
 %WORLD%.skeleton.bone[expr:flash | bayonet | scope_rakurs | scope_nvsn | scope_pso1sn | scope_nvas | scope_pso1as | scope_pka | scope_kashtan | scope_cobra | scope_pn23 | scope_elcan | scope_aimpoint | scope_eotech]:generateshape(box):setmaterial(objects\large_weapon)
 
@@ -205,7 +218,6 @@ unset LAM_CORRECTION_OFFSET
 unset WORLD_SCOPE_OFFSET
 unset BONE_OFFSET
 %WORLD%:unload()
-goto FINISH
 
 //////////////////////////////////////////////////
 %HUD%:loadfromfile(sources\wpn_sks_hud.ogf)
@@ -219,26 +231,15 @@ goto FINISH
 %HANDS%.skeleton.animation[name:sks_fab_sprint_end]:remove()
 %HANDS%.skeleton.animation[name:sks_revival]:remove()
 %HANDS%.skeleton.animation[name:sks_fab_revival]:remove()
+%HANDS%.skeleton.animation[name:sks_fab_dry]:remove()
+%HANDS%.skeleton.animation[name:sks_fab_shoot]:remove()
+%HANDS%.skeleton.animation[name:sks_fab_shoot1]:remove()
+%HANDS%.skeleton.animation[name:sks_fab_shoot2]:remove()
+%HANDS%.skeleton.animation[name:sks_reload_end]:remove()
+%HANDS%.skeleton.animation[name:sks_shoot]:remove()
+%HANDS%.skeleton.animation[name:sks_shoot1]:remove()
+%HANDS%.skeleton.animation[name:sks_shoot2]:remove()
 %HANDS%.skeleton:mergeomf(sources\sks_hands_additional.omf)
-%HANDS%.skeleton.animation[]:setpower(1)
-
-%HANDS%.skeleton.animation[name:sks_reload_end]:setlength(41):setflags(2):setspeed(1.3)
-%HANDS%.skeleton.animation[name:sks_reload_start]:setlength(65):setflags(2):setspeed(1.3)
-%HANDS%.skeleton.animation[name:sks_reload_empty_start]:setlength(45):setflags(2):setspeed(1.5)
-%HANDS%.skeleton.animation[name:sks_reload_ammo]:setlength(36):setflags(2):setspeed(1.5)
-
-%HUD%.skeleton.animation[name:reload_end]:setlength(41):setflags(2):setspeed(1.3)
-%HUD%.skeleton.animation[name:reload_start]:setlength(65):setflags(2):setspeed(1.3)
-%HUD%.skeleton.animation[name:reload_empty_start]:setlength(45):setflags(2):setspeed(1.5)
-%HUD%.skeleton.animation[name:reload_ammo]:setlength(36):setflags(2):setspeed(1.5)
-
-%HANDS%.skeleton.animation[name:sks_reload]:setspeed(1.3)
-%HANDS%.skeleton.animation[name:sks_reload_empty]:setspeed(1.3)
-%HANDS%.skeleton.animation[name:sks_fab_reload]:setspeed(1.3)
-%HANDS%.skeleton.animation[name:sks_fab_reload_empty]:setspeed(1.3)
-%HUD%.skeleton.animation[name:reload]:setspeed(1.3)
-%HUD%.skeleton.animation[name:reload_empty]:setspeed(1.3)
-
 
 //correct left hand position to prevent collision with exo
 set CORRECTION = 0,-0.001,0.025
@@ -254,10 +255,32 @@ set CORRECTION = 0,0.001,-0.025
 %HANDS%.skeleton.animation[name:sks_fab_reload_empty].bone[name:l_clavicle]:move(%CORRECTION%,5,111):interpolate(1,5):interpolate(111,115)
 unset CORRECTION
 
+%HANDS%.skeleton:mergeomf(sources\sks_hands_additional_nocorrection.omf)
+%HANDS%.skeleton.animation[name:sks_fab_lam]:rename(sks_fab_lam_new)
+
+%HANDS%.skeleton.animation[]:setpower(1)
+
+%HANDS%.skeleton.animation[name:sks_reload_end]:setlength(41):setflags(2):setspeed(1.3)
+%HANDS%.skeleton.animation[name:sks_reload_start]:setlength(65):setflags(2):setspeed(1.3)
+%HANDS%.skeleton.animation[name:sks_reload_empty_start]:setlength(45):setflags(2):setspeed(1.5)
+%HANDS%.skeleton.animation[name:sks_reload_ammo]:setlength(36):setflags(2):setspeed(1.5)
+
+%HUD%.skeleton.animation[name:reload_end]:setlength(41):setflags(2):setspeed(1.3)
+%HUD%.skeleton.animation[name:reload_start]:setlength(65):setflags(2):setspeed(1.3)
+%HUD%.skeleton.animation[name:reload_empty_start]:setlength(45):setflags(2):setspeed(1.5)
+%HUD%.skeleton.animation[name:reload_ammo]:setlength(36):setflags(2):setspeed(1.5)
+
+%HANDS%.skeleton.animation[name:sks_reload]:setspeed(1.166)
+%HANDS%.skeleton.animation[name:sks_reload_empty]:setspeed(1.166)
+%HANDS%.skeleton.animation[name:sks_fab_reload]:setspeed(1.166)
+%HANDS%.skeleton.animation[name:sks_fab_reload_empty]:setspeed(1.166)
+%HUD%.skeleton.animation[name:reload]:setspeed(1.166)
+%HUD%.skeleton.animation[name:reload_empty]:setspeed(1.166)
+
 //correct left finger for single-ammo reload 
 set FINGER_CORRECTION = 0,5,3
 %HANDS%.skeleton.animation[name:sks_reload_ammo].bone[name:l_finger0]:rotate(%FINGER_CORRECTION%, 0,-1, 0)
-%HANDS%.skeleton.animation[name:sks_reload_end].bone[name:l_finger0]:rotate(%FINGER_CORRECTION%, 0,30, 0):interpolate(30,35)
+//%HANDS%.skeleton.animation[name:sks_reload_end].bone[name:l_finger0]:rotate(%FINGER_CORRECTION%, 0,30, 0):interpolate(30,35)
 %HANDS%.skeleton.animation[name:sks_reload_empty_start].bone[name:l_finger0]:rotate(%FINGER_CORRECTION%, 15,-1, 0):interpolate(10,15)
 %HANDS%.skeleton.animation[name:sks_reload_start].bone[name:l_finger0]:rotate(%FINGER_CORRECTION%, 13,-1, 0):interpolate(5,13)
 unset FINGER_CORRECTION
@@ -285,31 +308,24 @@ unset FINGER_CORRECTION
 %HUD%.selection:reset()
 
 //Copy LAM
-set LAM_CORRECTION_OFFSET = -0.041, 0.05, 0.2
 set LAM_BONES_PARAMS = 0.093,-0.092,0.987, 0,0,0, 1
 %HUD%.skeleton:addbone(flash, wpn_body, %LAM_BONES_PARAMS%)
-%TEMP%:loadfromfile(sources\wpn_sig550_tactical_hud.ogf)
-%TEMP%.mesh.child[texture:wpn\wpn_anpeq16a]:copy()
-%HUD%.mesh.child1:paste():rebind(flash):move(%LAM_CORRECTION_OFFSET%)
-
-%HUD%.selection:pivotpoint(0,-0.116,0.915)
-%HUD%.selection:reset():pickverts(box, -1, -0.163, 0.908, 1, -0.045, 0.771)
-%HUD%.mesh.child1:rotateselected(18, x)
-
-%HUD%.skeleton:addbone(line, flash, %LAM_BONES_PARAMS%)
-%TEMP%.mesh.child[texture:pfx\pfx_laser_beam]:copy()
-%HUD%.mesh.child1:paste():rebind(line):move(%LAM_CORRECTION_OFFSET%)
-
 %HUD%.skeleton:addbone(light, flash, %LAM_BONES_PARAMS%)
-%TEMP%.mesh.child[texture:glow\glow_yellow]:copy()
-%HUD%.mesh.child1:paste():rebind(light):move(%LAM_CORRECTION_OFFSET%)
-%TEMP%.mesh.child[texture:lights\lights_cone_handing_lamp]:copy()
-%HUD%.mesh.child1:paste():rebind(light):move(%LAM_CORRECTION_OFFSET%)
-%TEMP%:unload()
-
-unset LAM_CORRECTION_OFFSET
+%HUD%.skeleton:addbone(line, flash, %LAM_BONES_PARAMS%)
 unset LAM_BONES_PARAMS
-%HUD%.selection:reset()
+
+%TEMP%:loadfromfile(sources\sks_lam.ogf)
+%TEMP%.mesh.child0:copy()
+%HUD%.mesh.child1:paste():rebind(light)
+%TEMP%.mesh.child1:copy()
+%HUD%.mesh.child1:paste():rebind(light)
+%TEMP%.mesh.child2:copy()
+%HUD%.mesh.child1:paste():rebind(line)
+%TEMP%.mesh.child3:copy()
+%HUD%.mesh.child1:paste():rebind(flash)
+%TEMP%.mesh.child4:copy()
+%HUD%.mesh.child1:paste():rebind(flash)
+%TEMP%:unload()
 
 // LAM animation
 %TEMP_HANDS%:loadfromfile(sources\wpn_hand_01.ogf)
@@ -383,7 +399,6 @@ unset LAM_BONES_PARAMS
 //remove
 //%HUD%.mesh.child[texture:wpn\sks\wpn_sks_wood_stock]:remove()
 //%HUD%.mesh.child[texture:wpn\sks\addons\wpn_sks_defense_rear_stock]:remove()
-//goto LABEL_SCOPE
 
 // Copy rakurs scope
 %TEMP%:loadfromfile(sources\scope_rakurs_from_toz34.ogf)
@@ -720,6 +735,7 @@ unset HIDE_SIGHTS_FRAME
 
 %HUD%.skeleton:saveomf(sks\wpn_sks_hud_animation.omf):resetmotionrefs():addmotionref(dynamics\weapons\wpn_sks\wpn_sks_hud_animation)
 %HUD%:savetofile(sks\wpn_sks_hud.ogf)
+
 %HANDS%.skeleton:saveomf(sks\wpn_hand_sks_hud_animation.omf)
 
 :FINISH
