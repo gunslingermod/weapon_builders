@@ -75,9 +75,9 @@ set WORLD_SCOPE_OFFSET = 0.066,-0.195,0.218
 %TEMP%:unload()
 
 // Copy cobra scope
-set WORLD_SCOPE_OFFSET = 0.064,-0.305,0.245
+set WORLD_SCOPE_OFFSET = 0.064,-0.307,0.232
 %WORLD%.skeleton:addbone(scope_cobra, wpn_body, %BONE_OFFSET%)
-%TEMP%:loadfromfile(sources\cobra_world_from_an94.ogf)
+%TEMP%:loadfromfile(sources\scope_cobra_world.ogf)
 %TEMP%.mesh.child0:copy()
 %WORLD%.mesh.child0:paste():rebind(scope_cobra):move(%WORLD_SCOPE_OFFSET%)
 %TEMP%.mesh.child1:copy()
@@ -85,9 +85,9 @@ set WORLD_SCOPE_OFFSET = 0.064,-0.305,0.245
 %TEMP%:unload()
 
 // Copy kashtan scope
-set WORLD_SCOPE_OFFSET = 0.064,-0.305,0.245
+set WORLD_SCOPE_OFFSET = 0.064,-0.307,0.232
 %WORLD%.skeleton:addbone(scope_kashtan, wpn_body, %BONE_OFFSET%)
-%TEMP%:loadfromfile(sources\kashtan_world_from_an94.ogf)
+%TEMP%:loadfromfile(sources\scope_kashtan_world.ogf)
 %TEMP%.mesh.child0:copy()
 %WORLD%.mesh.child0:paste():rebind(scope_kashtan):move(%WORLD_SCOPE_OFFSET%)
 %TEMP%.mesh.child1:copy()
@@ -97,7 +97,7 @@ set WORLD_SCOPE_OFFSET = 0.064,-0.305,0.245
 // Copy pka scope
 set WORLD_SCOPE_OFFSET = 0.064,-0.307,0.232
 %WORLD%.skeleton:addbone(scope_pka, wpn_body, %BONE_OFFSET%)
-%TEMP%:loadfromfile(sources\pka_world_from_an94.ogf)
+%TEMP%:loadfromfile(sources\scope_pka_world.ogf)
 %TEMP%.mesh.child0:copy()
 %WORLD%.mesh.child0:paste():rebind(scope_pka):move(%WORLD_SCOPE_OFFSET%)
 %TEMP%.mesh.child1:copy()
@@ -107,7 +107,7 @@ set WORLD_SCOPE_OFFSET = 0.064,-0.307,0.232
 // Copy pso1as scope
 set WORLD_SCOPE_OFFSET = 0.064,-0.307,0.232
 %WORLD%.skeleton:addbone(scope_pso1as, wpn_body, %BONE_OFFSET%)
-%TEMP%:loadfromfile(sources\pso1as_world_from_an94.ogf)
+%TEMP%:loadfromfile(sources\scope_pso1as_world.ogf)
 %TEMP%.mesh.child0:copy()
 %WORLD%.mesh.child0:paste():rebind(scope_pso1as):move(%WORLD_SCOPE_OFFSET%)
 %TEMP%.mesh.child1:copy()
@@ -115,9 +115,9 @@ set WORLD_SCOPE_OFFSET = 0.064,-0.307,0.232
 %TEMP%:unload()
 
 // Copy nvas scope
-set WORLD_SCOPE_OFFSET = 0.064,-0.307,0.24
+set WORLD_SCOPE_OFFSET = 0.064,-0.307,0.232
 %WORLD%.skeleton:addbone(scope_nvas, wpn_body, %BONE_OFFSET%)
-%TEMP%:loadfromfile(sources\nvas_world_from_an94.ogf)
+%TEMP%:loadfromfile(sources\scope_nvas_world.ogf)
 %TEMP%.mesh.child0:copy()
 %WORLD%.mesh.child0:paste():rebind(scope_nvas):move(%WORLD_SCOPE_OFFSET%)
 %TEMP%.mesh.child1:copy()
@@ -125,9 +125,9 @@ set WORLD_SCOPE_OFFSET = 0.064,-0.307,0.24
 %TEMP%:unload()
 
 // Copy pso1sn scope
-set WORLD_SCOPE_OFFSET = 0.059,-0.222,0.28
+set WORLD_SCOPE_OFFSET = 0.064,-0.307,0.232
 %WORLD%.skeleton:addbone(scope_pso1sn, wpn_body, %BONE_OFFSET%)
-%TEMP%:loadfromfile(sources\pso1sn_world_from_svu.ogf)
+%TEMP%:loadfromfile(sources\scope_pso1sn_world.ogf)
 %TEMP%.mesh.child0:copy()
 %WORLD%.mesh.child0:paste():rebind(scope_pso1sn):move(%WORLD_SCOPE_OFFSET%)
 %TEMP%.mesh.child1:copy()
@@ -135,9 +135,9 @@ set WORLD_SCOPE_OFFSET = 0.059,-0.222,0.28
 %TEMP%:unload()
 
 // Copy nvsn scope
-set WORLD_SCOPE_OFFSET = 0.059,-0.222,0.28
+set WORLD_SCOPE_OFFSET = 0.064,-0.307,0.232
 %WORLD%.skeleton:addbone(scope_nvsn, wpn_body, %BONE_OFFSET%)
-%TEMP%:loadfromfile(sources\nvsn_world_from_svu.ogf)
+%TEMP%:loadfromfile(sources\scope_nvsn_world.ogf)
 %TEMP%.mesh.child0:copy()
 %WORLD%.mesh.child0:paste():rebind(scope_nvsn):move(%WORLD_SCOPE_OFFSET%)
 %TEMP%.mesh.child1:copy()
@@ -147,7 +147,7 @@ set WORLD_SCOPE_OFFSET = 0.059,-0.222,0.28
 // Copy rakurs scope
 set WORLD_SCOPE_OFFSET = 0.065, -0.338, 0.27
 %WORLD%.skeleton:addbone(scope_rakurs, wpn_body, %BONE_OFFSET%)
-%TEMP%:loadfromfile(sources\rakurs_world_from_aks74u.ogf)
+%TEMP%:loadfromfile(sources\scope_rakurs_world.ogf)
 %TEMP%.mesh.child0:copy()
 %WORLD%.mesh.child0:paste():rebind(scope_rakurs):move(%WORLD_SCOPE_OFFSET%)
 %TEMP%.mesh.child1:copy()
@@ -401,7 +401,7 @@ unset LAM_BONES_PARAMS
 //%HUD%.mesh.child[texture:wpn\sks\addons\wpn_sks_defense_rear_stock]:remove()
 
 // Copy rakurs scope
-%TEMP%:loadfromfile(sources\scope_rakurs_from_toz34.ogf)
+%TEMP%:loadfromfile(sources\scope_rakurs_hud.ogf)
 set BONE_OFFSET = 0.093,-0.002, 0.829
 %HUD%.skeleton:addbone(scope_rakurs, wpn_body, %BONE_OFFSET%)
 %HUD%.skeleton:addbone(scope_rakurs_lense, scope_rakurs, %BONE_OFFSET%)
@@ -524,7 +524,7 @@ unset BONE_OFFSET
 set SCALING_FACTOR = 0.9,0.9,0.9
 set SCOPE_OFFSET = 0.0017,-0.020,0.015
 set SCOPE_AFTERSCALE_OFFSET = -0.002,0,0
-%TEMP%:loadfromfile(sources\scope_nvas_hud_from_an94.ogf)
+%TEMP%:loadfromfile(sources\scope_nvas_hud.ogf)
 %TEMP%.mesh.child0:copy()
 %HUD%.mesh.child0:paste()
 %HUD%.mesh.child0:rebind(scope_nvas):move(%SCOPE_OFFSET%):scale(%SCALING_FACTOR%):move(%SCOPE_AFTERSCALE_OFFSET%)
@@ -551,9 +551,9 @@ unset BONE_OFFSET
 
 %HUD%.selection:pivotpoint(0.055,-0.124,0.440)
 set SCALING_FACTOR = 0.9,0.9,0.9
-set SCOPE_OFFSET = 0.0015,-0.02,0
+set SCOPE_OFFSET = 0.0017,-0.020,0.015
 set SCOPE_AFTERSCALE_OFFSET = -0.002,0,0
-%TEMP%:loadfromfile(sources\scope_pso1as_hud_from_an94.ogf)
+%TEMP%:loadfromfile(sources\scope_pso1as_hud.ogf)
 %TEMP%.mesh.child0:copy()
 %HUD%.mesh.child0:paste()
 %HUD%.mesh.child0:rebind(scope_pso1as):move(%SCOPE_OFFSET%):scale(%SCALING_FACTOR%):move(%SCOPE_AFTERSCALE_OFFSET%)
@@ -576,10 +576,10 @@ set BONE_OFFSET = 0.093,0.008, 0.435
 unset BONE_OFFSET
 
 %HUD%.selection:pivotpoint(0.055,-0.124,0.440)
-set SCALING_FACTOR =0.95,0.95,0.95
-set SCOPE_OFFSET = 0.004,-0.015,0.03
+set SCALING_FACTOR = 0.9,0.9,0.9
+set SCOPE_OFFSET = 0.0017,-0.020,0.015
 set SCOPE_AFTERSCALE_OFFSET = -0.002,0,0
-%TEMP%:loadfromfile(sources\scope_cobra_hud_from_an94.ogf)
+%TEMP%:loadfromfile(sources\scope_cobra_hud.ogf)
 %TEMP%.mesh.child0:copy()
 %HUD%.mesh.child0:paste()
 %HUD%.mesh.child0:rebind(scope_cobra_sight):move(%SCOPE_OFFSET%):scale(%SCALING_FACTOR%):move(%SCOPE_AFTERSCALE_OFFSET%)
@@ -602,10 +602,10 @@ set BONE_OFFSET = 0.093,0.008, 0.435
 unset BONE_OFFSET
 
 %HUD%.selection:pivotpoint(0.055,-0.124,0.440)
-set SCALING_FACTOR =0.95,0.95,0.95
-set SCOPE_OFFSET = 0.0022,-0.0205,0.005
+set SCALING_FACTOR = 0.9,0.9,0.9
+set SCOPE_OFFSET = 0.0017,-0.020,0.015
 set SCOPE_AFTERSCALE_OFFSET = -0.002,0,0
-%TEMP%:loadfromfile(sources\scope_pka_from_an94.ogf)
+%TEMP%:loadfromfile(sources\scope_pka_hud.ogf)
 %TEMP%.mesh.child0:copy()
 %HUD%.mesh.child0:paste()
 %HUD%.mesh.child0:rebind(scope_pka_sight):move(%SCOPE_OFFSET%):scale(%SCALING_FACTOR%):move(%SCOPE_AFTERSCALE_OFFSET%)
@@ -635,10 +635,10 @@ set BONE_OFFSET = 0.093,0.008, 0.435
 unset BONE_OFFSET
 
 %HUD%.selection:pivotpoint(0.055,-0.124,0.440)
-set SCALING_FACTOR = 0.9,0.9,0.85
-set SCOPE_OFFSET = -0.0545,0.016,-0.32
+set SCALING_FACTOR = 0.9,0.9,0.9
+set SCOPE_OFFSET = 0.0017,-0.020,0.015
 set SCOPE_AFTERSCALE_OFFSET = -0.002,0,0
-%TEMP%:loadfromfile(sources\scope_pso1sn_hud_from_svu.ogf)
+%TEMP%:loadfromfile(sources\scope_pso1sn_hud.ogf)
 %TEMP%.mesh.child0:copy()
 %HUD%.mesh.child0:paste()
 %HUD%.mesh.child0:rebind(scope_pso1sn):move(%SCOPE_OFFSET%):scale(%SCALING_FACTOR%):move(%SCOPE_AFTERSCALE_OFFSET%)
@@ -660,9 +660,9 @@ unset BONE_OFFSET
 
 %HUD%.selection:pivotpoint(0.055,-0.124,0.440)
 set SCALING_FACTOR = 0.9,0.9,0.9
-set SCOPE_OFFSET = 0.0025,-0.02,0.005
+set SCOPE_OFFSET = 0.0017,-0.020,0.015
 set SCOPE_AFTERSCALE_OFFSET = -0.002,0,0
-%TEMP%:loadfromfile(sources\scope_kashtan_from_an94.ogf)
+%TEMP%:loadfromfile(sources\scope_kashtan_hud.ogf)
 %TEMP%.mesh.child0:copy()
 %HUD%.mesh.child0:paste()
 %HUD%.mesh.child0:rebind(scope_kashtan):move(%SCOPE_OFFSET%):scale(%SCALING_FACTOR%):move(%SCOPE_AFTERSCALE_OFFSET%)
@@ -684,9 +684,9 @@ unset BONE_OFFSET
 
 %HUD%.selection:pivotpoint(0.055,-0.124,0.440)
 set SCALING_FACTOR = 0.9,0.9,0.9
-set SCOPE_OFFSET = -0.0545,0.016,-0.32
+set SCOPE_OFFSET = 0.0017,-0.020,0.015
 set SCOPE_AFTERSCALE_OFFSET = -0.002,0,0
-%TEMP%:loadfromfile(sources\scope_nvsn_hud_from_svu.ogf)
+%TEMP%:loadfromfile(sources\scope_nvsn_hud.ogf)
 %TEMP%.mesh.child0:copy()
 %HUD%.mesh.child0:paste()
 %HUD%.mesh.child0:rebind(scope_nvsn):move(%SCOPE_OFFSET%):scale(%SCALING_FACTOR%):move(%SCOPE_AFTERSCALE_OFFSET%)
